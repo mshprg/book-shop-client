@@ -1,0 +1,41 @@
+.block {
+    margin-top: 5vh;
+    text-align: center;
+    display: inline-block;
+}
+.block:hover .add_to_card {
+    opacity: 1;
+}
+.image {
+    width: 12.4rem;
+    height: 19.8rem;
+    border-radius: 0.6rem;
+}
+.image:hover {
+    cursor: pointer;
+}
+.name {
+    font-weight: bold;
+    font-size: 1.7rem;
+    margin-top: 1rem;
+}
+.price {
+    margin-top: 0.5rem;
+    font-size: 1.7rem;
+}
+.add_to_card {
+    margin-top: 1.3rem;
+    width: 11rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+    background: black;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.4rem;
+    opacity: 0;
+}
+.add_to_card:hover {
+    transform: scale(1.05);
+}

@@ -1,0 +1,102 @@
+.navbar {
+    width: 100%;
+    background-color: white;
+    height: 5rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-shadow: 0 0.4rem 1.5rem 0 rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+}
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.name {
+    font-family: 'Notable', sans-serif;
+    font-size: 1.6rem;
+    color: #431A20;
+    margin-right: auto;
+}
+.help {
+    height: 5rem;
+    margin-bottom: 3rem;
+    width: 100%;
+}
+.svg_wrap {
+    height: 2.4rem;
+    margin-left: auto;
+}
+.svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    fill: #431A20;
+}
+.svg:hover {
+    fill: #CB2903;
+    cursor: pointer;
+}
+.find {
+    margin-right: 2.2rem;
+}
+.basket {
+}
+.basket_block {
+    display: inline-block;
+}
+.basket_block:hover .basket {
+    fill: #CB2903;
+    cursor: pointer;
+}
+.count_item {
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+    background-color: #D34343;
+    color: white;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    transform: translate(1rem, -1.2rem);
+}
+.link_block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.link {
+    margin-left: 4rem;
+    margin-right: 4rem;
+    color: #431A20;
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.4rem;
+}
+.link:hover {
+    cursor: pointer;
+    color: #CB2903;
+}
+.finder_svg {
+    width: 2rem;
+    height: 2rem;
+    fill: rgba(203, 41, 3, 0.5);
+}
+.finder_svg:hover {
+    cursor: pointer;
+    fill: #CB2903;
+}
+.finder {
+    border: none;
+    outline: none;
+    color: #431A20;
+    font-family: 'Manrope', sans-serif;
+    width: 20%;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    font-size: 1.4rem;
+}
+.finder::placeholder {
+    color: rgba(0, 0, 0, 0.50);
+}

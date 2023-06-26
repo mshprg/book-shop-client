@@ -1,0 +1,36 @@
+
+html,
+body {
+    min-width: 320px;
+    font-size: 10px;
+    background-color: white;
+    font-family: 'Manrope', sans-serif;
+}
+.height {
+    min-height: calc(100vh - 8rem);
+}
+::-webkit-scrollbar {
+    background-color: white;
+    width: 0.6rem;
+}
+p {
+    margin-bottom: 0;
+    transition: all 0.3s;
+}
+h1 {
+    margin-bottom: 0;
+}
+div {
+    transition: all 0.3s;
+}
+button {
+    transition: all 0.3s;
+}
+svg {
+    transition: all 0.3s;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #CB2903;
+    border-bottom-left-radius: 0.4rem;
+    border-top-left-radius: 0.4rem;
+}
