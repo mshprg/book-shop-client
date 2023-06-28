@@ -1,0 +1,100 @@
+.background {
+    position: fixed;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.window {
+    width: 80rem;
+    height: 42rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    display: flex;;
+    flex-direction: column;
+    padding: 3.4rem 3.2rem 1.5rem;
+}
+.filters_area {
+    width: 100%;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.price_line {
+    padding-bottom: 2rem;
+    border-bottom: 0.1rem solid black;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.head_text {
+    font-size: 2rem;
+}
+.range_slider_block {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.price {
+    font-size: 1.6rem;
+    margin-left: 1.4rem;
+    margin-right: 1.4rem;
+    width: 6rem;
+    text-align: center;
+}
+.genres_filter {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+.genres_list {
+    margin-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 18rem;
+}
+.genre {
+    font-size: 1.4rem;
+    margin-right: 6rem;
+    padding: 0 0.6rem 0;
+    display: inline-block;
+    margin-top: 2rem;
+}
+.genre:hover {
+    cursor: pointer;
+}
+.genre_current {
+    border-bottom: 0.2rem solid #CB2903;
+}
+.under_line {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+}
+.button {
+    width: 10rem;
+    height: 3rem;
+    border-radius: 2rem;
+    outline: none;
+    border: none;
+    font-size: 1.4rem;
+}
+.close {
+    background-color: white;
+    border: 0.1rem solid black;
+}
+.reset {
+    margin-left: auto;
+    background-color: black;
+    color: white;
+}
+.save {
+    background-color: #CB2903;
+    color: white;
+    margin-left: 1.8rem;
+}

@@ -1,0 +1,111 @@
+.up_line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5vh;
+}
+.head {
+    font-size: 2.4rem;
+}
+.basket_text {
+    margin-right: auto;
+}
+.total_price {
+    font-size: 2.2rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    border-bottom: 0.2rem solid rgba(0, 0, 0, 0.3);
+}
+.create_order {
+    width: 17.5rem;
+    height: 4rem;
+    border-radius: 2rem;
+    background-color: black;
+    color: white;
+    border: none;
+    outline: none;
+    margin-left: auto;
+    font-size: 1.6rem;
+}
+.wrapper_items {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+}
+.items {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-right: 1rem;
+    width: 100%;
+}
+.basket_item {
+    width: 100%;
+    display: flex;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+}
+.first {
+    margin-top: 1vh;
+}
+.book_image {
+    width: 17.53rem;
+    height: 28rem;
+    border-radius: 0.6rem;
+}
+.info_block {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5rem;
+}
+.name_line {
+    display: flex;
+}
+.name {
+    font-family: "Playfair Display", sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+}
+.delete {
+    width: 3.8rem;
+    height: 3.8rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.25);
+}
+.delete:hover {
+    cursor: pointer;
+    transform: rotate(90deg);
+}
+.delete_svg {
+    width: 2.8rem;
+    height: 2.8rem;
+    fill: black;
+}
+.description {
+    margin-top: 2rem;
+    font-size: 1.8rem;
+    max-width: 80rem;
+}
+.genres {
+    display: block;
+}
+.genre {
+    width: 10rem;
+    height: 3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2.5rem;
+    border: 0.1rem solid black;
+    font-size: 1.4rem;
+    border-radius: 1.5rem;
+    margin-top: 1rem;
+}
+.price {
+    font-size: 2.2rem;
+    margin-top: auto;
+}

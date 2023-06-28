@@ -3,8 +3,13 @@ import Grid from "@/components/Grid";
 import HeightWrapper from "@/components/HeightWrapper";
 import Image from "next/image";
 import Book from "@/components/Book";
+import Pagination from "@/components/Pagination";
+import {useState} from "react";
+import Filters from "@/components/Filters";
 
 function Catalog() {
+
+    const [filtersVisible, setFiltersVisible] = useState(false)
 
     const genres = [
         {name: "Pets"},
@@ -15,8 +20,16 @@ function Catalog() {
         {name: "Study"},
     ]
 
+    const updateFiltersVisible = (value) => {
+        setFiltersVisible(value)
+    }
+
     return (
         <HeightWrapper>
+            <Filters
+                visible={filtersVisible}
+                setVisible={(value) => updateFiltersVisible(value)}
+            />
             <Grid>
                 <div className={styles.large_blocks}>
                     <div className={styles.large_block}>
@@ -65,7 +78,10 @@ function Catalog() {
                     </div>
                 </div>
                 <div className={styles.filter_block}>
-                    <button className={styles.filter_button}>
+                    <button
+                        onClick={() => setFiltersVisible(true)}
+                        className={styles.filter_button}
+                    >
                         Filters
                         <svg
                             className={styles.filter_svg}
@@ -82,6 +98,7 @@ function Catalog() {
                         <Book />
                     )}
                 </div>
+                <Pagination />
             </Grid>
         </HeightWrapper>
     );

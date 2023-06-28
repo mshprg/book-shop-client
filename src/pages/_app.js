@@ -1,4 +1,5 @@
 import '@/styles/global.css'
+import '@/styles/animation.css'
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
