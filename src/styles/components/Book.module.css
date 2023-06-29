@@ -39,3 +39,49 @@
 .add_to_card:hover {
     transform: scale(1.05);
 }
+@media (max-width: 1399px) {
+    .image {
+        height: 16rem;
+        width: 10rem;
+    }
+    .name {
+        font-size: 1.4rem;
+    }
+    .price {
+        font-size: 1.4rem;
+    }
+    .add_to_card {
+        margin-top: 1rem;
+        width: 9rem;
+        height: 2.6rem;
+        font-size: 1rem;
+    }
+}
+@media (max-width: 1199px) {
+    .add_to_card {
+        opacity: 1;
+    }
+}
+@media (max-width: 991px) {
+    .block {
+        margin-top: 4vh;
+    }
+    .image {
+        height: 12rem;
+        width: 7.5rem;
+        border-radius: 0.4rem;
+    }
+    .name {
+        font-size: 1.1rem;
+        margin-top: 0.8rem;
+    }
+    .price {
+        font-size: 1.1rem;
+    }
+    .add_to_card {
+        margin-top: 0.8rem;
+        width: 7.2rem;
+        height: 2.2rem;
+        font-size: 0.9rem;
+    }
+}

@@ -58,6 +58,14 @@
     overflow-y: auto;
     max-height: 18rem;
 }
+.genres_list::-webkit-scrollbar {
+    background-color: white;
+    width: 0.3rem;
+}
+.genres_list::-webkit-scrollbar-thumb {
+    background-color: rgba(67, 26, 32, 0.3);
+    border-radius: 0.2rem;
+}
 .genre {
     font-size: 1.4rem;
     margin-right: 6rem;
@@ -84,6 +92,9 @@
     border: none;
     font-size: 1.4rem;
 }
+.button:hover {
+    transform: scale(1.05);
+}
 .close {
     background-color: white;
     border: 0.1rem solid black;
@@ -97,4 +108,46 @@
     background-color: #CB2903;
     color: white;
     margin-left: 1.8rem;
+}
+@media (max-width: 1399px) {
+    .window {
+        width: 70rem;
+        height: 36.75rem;
+        padding: 2.9rem 2.7rem 1.5rem;
+    }
+    .price_line {
+        padding-bottom: 1.5rem;
+    }
+    .head_text {
+        font-size: 1.7rem;
+    }
+    .price {
+        font-size: 1.4rem;
+        margin-left: 1.1rem;
+        margin-right: 1.1rem;
+        width: 5rem;
+    }
+    .genres_filter {
+        margin-top: 1.5rem;
+        margin-bottom: 0.7rem;
+    }
+    .genres_list {
+        max-height: 15rem;
+    }
+    .genre {
+        font-size: 1.1rem;
+        margin-right: 4rem;
+        padding: 0 0.4rem 0;
+        margin-top: 1.6rem;
+    }
+    .button {
+        width: 8rem;
+        height: 2.6rem;
+        font-size: 1.1rem;
+    }
+}
+@media (max-width: 1199px) {
+    .genre {
+        margin-top: 1.8rem;
+    }
 }

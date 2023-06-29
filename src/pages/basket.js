@@ -4,8 +4,12 @@ import Grid from "@/components/Grid";
 import global from "@/styles/global.module.css";
 import Image from "next/image";
 import {useEffect, useRef, useState} from "react";
+import {useRouter} from "next/router";
+import {MAKE_ORDER} from "@/utils/routes";
 
 function Basket() {
+
+    const router = useRouter()
 
     const [height, setHeight] = useState(0)
 
@@ -23,16 +27,25 @@ function Basket() {
         }
     }, [layoutRef, lineRef, itemRef])
 
+    const toMakeOrder = () => {
+        router.push(MAKE_ORDER).then()
+    }
+
     return (
         <div ref={layoutRef}>
             <HeightWrapper>
                 <Grid>
                     <div ref={lineRef}>
                         <div className={global.margin}/>
-                        <div className={styles.up_line}>
-                            <p className={styles.head + ' ' + styles.basket_text}>Shopping basket</p>
+                        <div className={global.up_line}>
+                            <p className={global.head + ' ' + styles.basket_text}>Shopping basket</p>
                             <p className={styles.total_price}>Total: 16.00 $</p>
-                            <button className={styles.create_order}>Create order</button>
+                            <button
+                                onClick={toMakeOrder}
+                                className={styles.create_order}
+                            >
+                                Create order
+                            </button>
                         </div>
                     </div>
                     <div className={styles.wrapper_items}>

@@ -22,3 +22,16 @@
     cursor: pointer;
     color: #CB2903;
 }
+@media (max-width: 1399px) {
+    .block {
+        height: 10rem;
+    }
+    .link {
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: 991px) {
+    .block {
+        height: 9rem;
+    }
+}

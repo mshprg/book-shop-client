@@ -1,0 +1,6 @@
+export const HOME = "/"
+export const CATALOG = "/catalog"
+export const BASKET = "/basket"
+export const BOOK = "/book/"
+export const CONTACT_US = "/contact-us"
+export const MAKE_ORDER = "/make-order"

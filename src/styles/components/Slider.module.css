@@ -1,13 +1,11 @@
 .wrapper {
     width: 50%;
-    height: 4rem;
     position: relative;
 }
 .slider {
     width: 100%;
     position: absolute;
     -webkit-appearance: none;
-    top: 45%;
     font-size: 0;
 }
 .red_line {
@@ -93,4 +91,24 @@
 }
 .slider:focus::-ms-fill-upper {
     background: #CB2903;
+}
+@media (max-width: 1399px) {
+    .wrapper {
+        width: 40%;
+    }
+    .slider::-webkit-slider-thumb {
+        height: 1.6rem;
+        width: 1.6rem;
+        margin-top: -0.65rem;
+    }
+    .slider::-moz-range-thumb {
+        height: 1.6rem;
+        width: 1.6rem;
+        margin-top: -0.65rem;
+    }
+    .slider::-ms-thumb {
+        height: 1.6rem;
+        width: 1.6rem;
+        margin-top: -0.65rem;
+    }
 }

@@ -6,7 +6,7 @@ const HeightWrapper = ({dir = "column", children}) => {
             className="height"
             style={{display: 'flex', flexDirection: dir}}
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
         >
             {children}
         </motion.div>

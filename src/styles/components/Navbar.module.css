@@ -41,8 +41,6 @@
 .find {
     margin-right: 2.2rem;
 }
-.basket {
-}
 .basket_block {
     display: inline-block;
 }
@@ -73,6 +71,7 @@
     color: #431A20;
     font-family: 'Manrope', sans-serif;
     font-size: 1.4rem;
+    text-decoration: none;
 }
 .link:hover {
     cursor: pointer;
@@ -99,4 +98,35 @@
 }
 .finder::placeholder {
     color: rgba(0, 0, 0, 0.50);
+}
+@media (max-width: 1399px) {
+    .navbar {
+        height: 4.5rem;
+    }
+    .help {
+        height: 4.5rem;
+    }
+    .name {
+        font-size: 1.4rem;
+    }
+    .svg {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+    .finder_svg {
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+    .link {
+        font-size: 1.2rem;
+    }
+    .finder {
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: 991px) {
+    .link {
+        margin-left: 2.5rem;
+        margin-right: 2.5rem;
+    }
 }

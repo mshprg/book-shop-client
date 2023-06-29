@@ -1,9 +1,9 @@
 import {Container, Row} from "react-bootstrap";
 
-function Grid({ children }) {
+function Grid({ children, className = "" }) {
     return (
-        <Container>
-            <Row>
+        <Container className={className}>
+            <Row className={className}>
                 {children}
             </Row>
         </Container>
