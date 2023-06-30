@@ -269,6 +269,9 @@
         height: 3rem;
         font-size: 0.9rem;
     }
+    .padding_genres {
+        padding: 2rem;
+    }
     .finder_wrapper {
         height: 2rem;
         width: 10rem;
@@ -302,6 +305,96 @@
 @media (max-width: 767px) {
     .large_block {
         width: 25.5rem;
-        height: 17rem;
+        height: 15rem;
+    }
+    .large_book_img {
+        height: 10rem;
+        width: 6.26rem;
+        border-radius: 0.3rem;
+    }
+    .description_block {
+        padding: 1.6rem 2.4rem 1.2rem 1.2rem;
+    }
+    .name_block {
+        font-size: 1.4rem;
+        margin-bottom: 0.2rem;
+    }
+    .add_to_card {
+        width: 7rem;
+        height: 2.6rem;
+        font-size: 0.8rem;
+    }
+    .padding_genres {
+        padding: 1.6rem;
+    }
+    .genre {
+        font-size: 0.8rem;
+        margin-right: 2rem;
+    }
+}
+@media (max-width: 575px) {
+    .large_blocks {
+        flex-direction: column;
+    }
+    .large_block {
+        width: 100%;
+        height: 23rem;
+        margin-left: 0;
+    }
+    .ml_auto {
+        margin-top: 2vh;
+    }
+    .large_book_img {
+        height: 16rem;
+        width: 10rem;
+        border-radius: 0.5rem;
+    }
+    .description_block {
+        padding: 2rem 2.8rem 1.8rem 1.8rem;
+    }
+    .name_block {
+        font-size: 1.8rem;
+        margin-bottom: 0.6rem;
+    }
+    .description_book {
+        font-size: 0.9rem;
+    }
+    .add_to_card {
+        width: 10rem;
+        height: 3.2rem;
+        font-size: 1rem;
+    }
+    .padding_genres {
+        padding: 2rem;
+    }
+    .finder_wrapper {
+        height: 3rem;
+        width: 12rem;
+    }
+    .finder_genres {
+        font-size: 1rem;
+    }
+    .find_svg {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+    .genres_list {
+        margin-top: 2rem;
+    }
+    .genre {
+        font-size: 1rem;
+        margin-right: 3rem;
+    }
+    .filter_block {
+        margin-top: 3vh;
+    }
+    .filter_button {
+        width: 10rem;
+        height: 3.2rem;
+        font-size: 1rem;
+    }
+    .filter_svg {
+        width: 1.8rem;
+        height: 1.8rem;
     }
 }

@@ -151,3 +151,86 @@
         margin-top: 1.8rem;
     }
 }
+@media (max-width: 767px) {
+    .window {
+        width: 55rem;
+        height: 60rem;
+    }
+    .head_text {
+        font-size: 1.8rem;
+    }
+    .price {
+        font-size: 1.5rem;
+        margin-left: 1.3rem;
+        margin-right: 1.3rem;
+    }
+    .genres_filter {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    .genres_list {
+        max-height: 35rem;
+    }
+    .genre {
+        font-size: 1.3rem;
+        margin-right: 5rem;
+        margin-top: 2rem;
+    }
+    .button {
+        width: 9rem;
+        height: 2.8rem;
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: 575px) {
+    .window {
+        width: 35rem;
+        height: 60rem;
+        padding: 2rem 2rem 1.5rem;
+    }
+    .price_line {
+        flex-direction: column;
+    }
+    .range_slider_block {
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .price {
+        font-size: 1.3rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .head_text {
+        text-align: center;
+    }
+    .genres_list {
+        margin-top: 1rem;
+        text-align: center;
+        max-height: 36rem;
+    }
+    .genre {
+        font-size: 1.4rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+    .under_line {
+        justify-content: center;
+    }
+    .button {
+        margin: 0;
+    }
+    .close {
+        margin-right: auto;
+    }
+    .save {
+        margin-left: auto;
+    }
+}
+@media (max-height: 480px) {
+    .window {
+        height: 47rem;
+    }
+    .genres_list {
+        max-height: 25rem;
+    }
+}

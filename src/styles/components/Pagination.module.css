@@ -17,3 +17,12 @@
 .arrow_svg_no_click {
     fill: rgba(0, 0, 0, 0.4);
 }
+@media (max-width: 767px) {
+    .block {
+        margin-bottom: 3vh;
+    }
+    .arrow_svg {
+        width: 3.4rem;
+        height: 3.4rem;
+    }
+}

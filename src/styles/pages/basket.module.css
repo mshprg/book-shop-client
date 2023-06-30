@@ -1,6 +1,12 @@
 .basket_text {
     margin-right: auto;
 }
+.up_line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5vh;
+}
 .total_price {
     font-size: 2rem;
     padding-left: 2.5rem;
@@ -25,6 +31,7 @@
     flex: 1 0 auto;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .items {
     overflow-x: hidden;
@@ -40,74 +47,53 @@
     background-color: rgba(67, 26, 32, 0.2);
     border-radius: 0.3rem;
 }
-.basket_item {
-    width: 100%;
-    display: flex;
-    padding-top: 3vh;
-    padding-bottom: 3vh;
+@media (max-width: 991px) {
+    .total_price {
+        font-size: 1.9rem;
+        padding-left: 2.1rem;
+        padding-right: 2.1rem;
+    }
+    .create_order {
+        width: 15rem;
+        height: 3.4rem;
+        font-size: 1.5rem;
+    }
+    .items {
+        padding-right: 1.5rem;
+    }
 }
-.first {
-    margin-top: 1vh;
+@media (max-width: 767px) {
+    .total_price {
+        font-size: 1.7rem;
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+    }
+    .create_order {
+        width: 13rem;
+        height: 3rem;
+        font-size: 1.2rem;
+    }
+    .up_line {
+        margin-bottom: 2vh;
+    }
 }
-.book_image {
-    width: 15rem;
-    height: 24rem;
-    border-radius: 0.6rem;
-}
-.info_block {
-    flex: 1 0 auto;
-    display: flex;
-    flex-direction: column;
-    margin-left: 5rem;
-}
-.name_line {
-    display: flex;
-}
-.name {
-    font-family: "Playfair Display", sans-serif;
-    font-size: 2.8rem;
-    font-weight: bold;
-}
-.delete {
-    width: 3.8rem;
-    height: 3.8rem;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.25);
-}
-.delete:hover {
-    cursor: pointer;
-    transform: rotate(90deg);
-}
-.delete_svg {
-    width: 2.8rem;
-    height: 2.8rem;
-    fill: black;
-}
-.description {
-    margin-top: 1.6rem;
-    font-size: 1.6rem;
-    max-width: 80rem;
-}
-.genres {
-    display: block;
-}
-.genre {
-    width: 10rem;
-    height: 3rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 2.5rem;
-    border: 0.1rem solid black;
-    font-size: 1.4rem;
-    border-radius: 1.5rem;
-    margin-top: 1.4rem;
-}
-.price {
-    font-size: 2.2rem;
-    margin-top: auto;
+@media (max-width: 575px) {
+    .total_price {
+        border: none;
+        text-align: center;
+        margin-top: 3vh;
+    }
+    .up_line {
+        margin-bottom: 1vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .create_order {
+        margin-top: 1vh;
+        margin-left: 0;
+    }
+    .basket_text {
+        margin: 0;
+    }
 }

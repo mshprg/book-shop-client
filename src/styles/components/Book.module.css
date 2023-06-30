@@ -85,3 +85,25 @@
         font-size: 0.9rem;
     }
 }
+@media (max-width: 575px) {
+    .block {
+        margin-top: 5vh;
+    }
+    .image {
+        height: 15rem;
+        width: 9.39rem;
+        border-radius: 0.5rem;
+    }
+    .name {
+        font-size: 1.2rem;
+    }
+    .price {
+        font-size: 1.2rem;
+    }
+    .add_to_card {
+        margin-top: 0.8rem;
+        width: 8rem;
+        height: 2.4rem;
+        font-size: 1rem;
+    }
+}

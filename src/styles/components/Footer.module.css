@@ -5,7 +5,6 @@
     box-shadow: 0 -0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
     display: flex;
     align-items: center;
-    border-top: 0.1rem solid #431A20;
 }
 .link_block {
     display: flex;
@@ -33,5 +32,13 @@
 @media (max-width: 991px) {
     .block {
         height: 9rem;
+    }
+}
+@media (max-width: 767px) {
+    .block {
+        height: 8rem;
+    }
+    .link {
+        font-size: 1.2rem;
     }
 }

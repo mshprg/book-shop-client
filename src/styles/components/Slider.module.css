@@ -112,3 +112,13 @@
         margin-top: -0.65rem;
     }
 }
+@media (max-width: 767px) {
+    .wrapper {
+        width: 45%;
+    }
+}
+@media (max-width: 575px) {
+    .wrapper {
+        width: 60%;
+    }
+}

@@ -62,3 +62,126 @@
     margin-top: 9vh;
     font-size: 2rem;
 }
+@media (max-width: 1399px) {
+    .book_image {
+        height: 32rem;
+        width: 20rem;
+    }
+    .name {
+        font-size: 2.6rem;
+    }
+    .small_description {
+        margin-top: 1.2rem;
+        font-size: 1.7rem;
+    }
+    .genre {
+        margin-top: 1.4rem;
+        width: 10rem;
+        height: 2.8rem;
+        font-size: 1.3rem;
+    }
+    .add_to_card {
+        width: 13rem;
+        height: 3.8rem;
+        font-size: 1.3rem;
+    }
+    .price {
+        font-size: 1.8rem;
+    }
+    .large_description {
+        font-size: 1.8rem;
+    }
+}
+@media (max-width: 991px) {
+    .book_image {
+        height: 28rem;
+        width: 17.5rem;
+    }
+    .name {
+        font-size: 2.4rem;
+    }
+    .small_description {
+        font-size: 1.5rem;
+    }
+    .large_description {
+        margin-top: 7vh;
+        margin-bottom: 2rem;
+        font-size: 1.6rem;
+    }
+}
+@media (max-width: 767px) {
+    .book_image {
+        height: 24rem;
+        width: 15rem;
+    }
+    .name {
+        font-size: 2.2rem;
+    }
+    .small_description {
+        font-size: 1.2rem;
+        margin-top: 0.8rem;
+    }
+    .genre {
+        margin-top: 1rem;
+        width: 7rem;
+        height: 2.2rem;
+        font-size: 1.1rem;
+    }
+    .add_to_card {
+        width: 11rem;
+        height: 3.2rem;
+        font-size: 1.1rem;
+    }
+    .price {
+        font-size: 1.6rem;
+        margin-left: 3rem;
+    }
+    .large_description {
+        font-size: 1.4rem;
+    }
+}
+@media (max-width: 575px) {
+    .h0 {
+        height: 0;
+    }
+    .book_image {
+        height: 22rem;
+        width: 13.8rem;
+    }
+    .right_block {
+        margin-top: 3vh;
+        margin-left: 0;
+        align-items: center;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    .name {
+        font-size: 2.4rem;
+    }
+    .small_description {
+        text-align: center;
+        font-size: 1.1rem;
+        margin-top: 0.8rem;
+    }
+    .price_line {
+        margin-top: 2vh;
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+    .price {
+        margin-left: 0;
+    }
+    .add_to_card {
+        margin-top: 2vh;
+        width: 12rem;
+        height: 3.4rem;
+        font-size: 1.2rem;
+    }
+    .large_description {
+        margin-top: 4vh;
+        text-align: center;
+        font-size: 1.2rem;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}

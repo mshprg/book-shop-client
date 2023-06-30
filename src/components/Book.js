@@ -5,7 +5,7 @@ import Image from "next/image";
 const Book = () => {
     return (
         <Col
-            xxl={3} xl={3} lg={3} md={3} sm={4}
+            xxl={3} xl={3} lg={3} md={3} sm={4} xs={6}
             className={styles.block}
         >
             <Image src={require("@/img/book.png")} className={styles.image}  alt="book preview"/>

@@ -99,6 +99,9 @@
 .finder::placeholder {
     color: rgba(0, 0, 0, 0.50);
 }
+.menu_svg {
+    display: none;
+}
 @media (max-width: 1399px) {
     .navbar {
         height: 4.5rem;
@@ -123,10 +126,59 @@
     .finder {
         font-size: 1.2rem;
     }
+    .count_item {
+        width: 1.2rem;
+        height: 1.2rem;
+        font-size: 0.8rem;
+        transform: translate(1rem, -1rem);
+    }
 }
 @media (max-width: 991px) {
     .link {
         margin-left: 2.5rem;
         margin-right: 2.5rem;
+    }
+}
+@media (max-width: 767px) {
+    .navbar {
+        height: 4rem;
+    }
+    .help {
+        height: 3.5rem;
+        margin-bottom: 2.5rem;
+    }
+    .name {
+        margin-right: 0;
+        color: white;
+    }
+    .none {
+        display: none;
+    }
+    .menu_svg {
+        display: block;
+        fill: #431A20;
+        margin-right: auto;
+    }
+}
+@media (max-width: 575px) {
+    .navbar {
+        height: 5rem;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+    .help {
+        height: 5rem;
+    }
+    .svg {
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+    .finder_svg {
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+    .finder {
+        font-size: 1.4rem;
+        width: 40%;
     }
 }

@@ -50,7 +50,12 @@ function Catalog() {
                     </div>
                     <div className={styles.large_block + ' ' + styles.ml_auto + ' ' + styles.padding_genres}>
                         <div className={styles.line_genres}>
-                            <h1 className={styles.name_block}>Genres</h1>
+                            <h1
+                                style={{marginBottom: 0}}
+                                className={styles.name_block}
+                            >
+                                Genres
+                            </h1>
                             <div className={styles.finder_genres_block}>
                                 <div className={styles.finder_wrapper}>
                                     <input

@@ -9,15 +9,18 @@ function Book() {
     return (
         <HeightWrapper>
             <Grid>
-                <div className={global.margin} />
-                <Col className={styles.book_image_block} xxl={5}>
+                <div className={global.margin + ' ' + styles.h0} />
+                <Col
+                    className={styles.book_image_block}
+                    xxl={5} xl={5} lg={5} md={5} sm={5} xs={12}
+                >
                     <Image
                         src={require("@/img/book.png")}
                         className={styles.book_image}
                         alt="Book image"
                     />
                 </Col>
-                <Col xxl={7}>
+                <Col xxl={7} xl={7} lg={7} md={7} sm={7} xs={12}>
                     <div className={styles.right_block}>
                         <h1 className={styles.name}>The Power</h1>
                         <p className={styles.small_description}>

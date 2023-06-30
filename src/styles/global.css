@@ -44,3 +44,8 @@ svg {
         transform: scale(1.0) !important;
     }
 }
+@media (max-width: 767px) {
+    .height {
+        min-height: calc(100vh - 6rem);
+    }
+}
