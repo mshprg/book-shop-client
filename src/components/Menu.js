@@ -3,7 +3,7 @@ import navbar_styles from "@/styles/components/Navbar.module.css"
 import { motion } from "framer-motion";
 import {useEffect, useState} from "react";
 import Link from "next/link";
-import {CATALOG, CONTACT_US, HOME} from "@/utils/routes";
+import {CATALOG, CONTACT_US, HOME, ORDERS} from "@/utils/routes";
 
 const Menu = ({ visible, setVisible }) => {
 
@@ -36,7 +36,7 @@ const Menu = ({ visible, setVisible }) => {
             }}
         >
             <div className={styles.up_line}>
-                <h1 className={navbar_styles.name}>Digital Books</h1>
+                <h1 className={navbar_styles.name}>Book Bytes</h1>
                 <svg
                     onClick={closeMenu}
                     className={styles.close_svg}
@@ -52,7 +52,7 @@ const Menu = ({ visible, setVisible }) => {
                     href={HOME}
                     className={styles.link}
                 >
-                    Home
+                    Главная
                 </Link>
             </div>
             <div className={styles.link_wrapper}>
@@ -61,16 +61,16 @@ const Menu = ({ visible, setVisible }) => {
                     href={CATALOG}
                     className={styles.link}
                 >
-                    Books
+                    Книги
                 </Link>
             </div>
             <div className={styles.link_wrapper}>
                 <Link
                     onClick={closeMenu}
-                    href={"/"}
+                    href={ORDERS}
                     className={styles.link}
                 >
-                    Order
+                    Заказы
                 </Link>
             </div>
             <div className={styles.link_wrapper}>
@@ -79,7 +79,7 @@ const Menu = ({ visible, setVisible }) => {
                     href={CONTACT_US}
                     className={styles.link}
                 >
-                    Contact Us
+                    Контакты
                 </Link>
             </div>
         </motion.div>

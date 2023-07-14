@@ -1,29 +1,34 @@
 import styles from "@/styles/components/BasketBook.module.css";
-import Image from "next/image";
 import {motion, useMotionValue} from "framer-motion";
 import {useEffect, useState} from "react";
+import {BOOK, HOST} from "@/utils/routes";
 
-const BasketBook = ({ itemRef, item, items, deleteItem }) => {
+const BasketBook = ({ itemRef, item, router, deleteItem }) => {
 
     const [opacity, setOpacity] = useState(1)
-    const height = useMotionValue(0)
+    const [height, setHeight] = useState(0)
     const [display, setDisplay] = useState(true)
+
+    const src = HOST + 'image/' + item.image
 
     const deleteCurrentItem = () => {
         setOpacity(0)
         setTimeout(() => {
             setDisplay(false)
-            height.set(0)
+            setHeight(0)
             setTimeout(() => {
-                deleteItem(item.id)
+                deleteItem(item.basketItemId)
             }, 400)
         }, 400)
     }
 
+    const clickOnItem = () => {
+        router.push(BOOK + item.token).then()
+    }
+
     useEffect(() => {
         if (itemRef) {
-            height.set(itemRef.current.getBoundingClientRect().height)
-            console.log(height)
+            setHeight(itemRef.current.getBoundingClientRect().height)
         }
     }, [itemRef])
 
@@ -36,10 +41,11 @@ const BasketBook = ({ itemRef, item, items, deleteItem }) => {
             ref={itemRef}
             className={styles.basket_item}
         >
-            <Image
+            <img
+                onClick={clickOnItem}
                 style={{display: display ? "block" : "none"}}
                 alt="book image"
-                src={require("@/img/book.png")}
+                src={src}
                 className={styles.book_image + ' ' + styles.padding_item}
             />
             <div
@@ -47,7 +53,7 @@ const BasketBook = ({ itemRef, item, items, deleteItem }) => {
                 className={styles.info_block + ' ' + styles.padding_item}
             >
                 <div className={styles.name_line}>
-                    <h1 className={styles.name}>The Power</h1>
+                    <h1 className={styles.name}>{item.name}</h1>
                     <div className={styles.delete}>
                         <svg
                             onClick={deleteCurrentItem}
@@ -60,12 +66,14 @@ const BasketBook = ({ itemRef, item, items, deleteItem }) => {
                     </div>
                 </div>
                 <p className={styles.description}>
-                    Suddenly - tomorrow or the day after - girls find that with a flick of their fingers, they can inflict agonizing pain and even death. Suddenly - tomorrow or the day after - girls find that with a flick of their fingers, they can inflict agonizing pain and even death.
+                    {item.description}
                 </p>
-                <div className={styles.genres}>
-                    <p className={styles.genre}>Study</p>
-                </div>
-                <p className={styles.price}>8.00 $</p>
+                {item.genres.map(genre =>
+                    <div className={styles.genres}>
+                        <p className={styles.genre}>{genre.name}</p>
+                    </div>
+                )}
+                <p className={styles.price}>{item.price.toFixed(2)} ₽</p>
             </div>
         </motion.div>
     );

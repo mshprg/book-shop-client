@@ -16,6 +16,7 @@
 }
 .arrow_svg_no_click {
     fill: rgba(0, 0, 0, 0.4);
+    pointer-events: none;
 }
 @media (max-width: 767px) {
     .block {

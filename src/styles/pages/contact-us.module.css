@@ -39,3 +39,47 @@
     font-size: 1.2rem;
     text-align: center;
 }
+@media (max-width: 1199px) {
+    .text {
+        font-size: 1.6rem;
+        margin-top: 1.5vh;
+        max-width: 50%;
+    }
+    .hp_text {
+        margin-top: 3vh;
+    }
+}
+@media (max-width: 991px) {
+    .text {
+        font-size: 1.4rem;
+    }
+    .hp_text {
+        font-size: 1.6rem;
+    }
+    .email_wrapper {
+        height: 3.5rem;
+    }
+    .email {
+        font-size: 1.6rem;
+    }
+    .det_text {
+        margin-top: 0.8rem;
+        font-size: 1.1rem;
+    }
+}
+@media (max-width: 767px) {
+    .text {
+        font-size: 1.2rem;
+        max-width: 65%;
+    }
+}
+@media (max-width: 575px) {
+    .text {
+        max-width: 90%;
+    }
+    .wrap {
+        margin-top: 25vh;
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -1,11 +1,13 @@
 import styles from "@/styles/components/Navbar.module.css"
 import {Container} from "react-bootstrap";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import {BASKET, CATALOG, CONTACT_US, HOME} from "@/utils/routes";
+import {BASKET, CATALOG, CONTACT_US, HOME, ORDERS} from "@/utils/routes";
 import {useRouter} from "next/router";
 import Menu from "@/components/Menu";
+import {useSelector} from "react-redux";
+import {useActions} from "@/hooks/useActions";
 
 function Navbar() {
 
@@ -14,6 +16,9 @@ function Navbar() {
     const [isOpenFinder, setIsOpenFinder] = useState(false)
     const [opacity, setOpacity] = useState(1)
     const [finderOpacity, setFinderOpacity] = useState(0)
+
+    const {_basketItems} = useSelector(state => state.basketItems)
+    const {setFinderText, setCurrentPage} = useActions()
 
     const [isOpenMenu, setIsOpenMenu] = useState(false)
 
@@ -36,6 +41,23 @@ function Navbar() {
         }, 300)
     }
 
+    const findBook = () => {
+        if (text) {
+            if (router.pathname !== CATALOG) {
+                router.push(CATALOG).then(() => {
+                    setFinderText(text)
+                    closeFinder()
+                    setText("")
+                })
+            } else {
+                setFinderText(text)
+                closeFinder()
+                setText("")
+            }
+            setCurrentPage(1)
+        }
+    }
+
     const toBasket = () => {
         router.push(BASKET).then()
     }
@@ -56,6 +78,7 @@ function Navbar() {
                     {isOpenFinder ?
                         <motion.div animate={{opacity: finderOpacity}} className={styles.row}>
                             <svg
+                                onClick={findBook}
                                 className={styles.finder_svg}
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 -960 960 960"
@@ -67,7 +90,7 @@ function Navbar() {
                                 onChange={(e) => setText(e.target.value)}
                                 type="text"
                                 className={styles.finder}
-                                placeholder="Find books"
+                                placeholder="Поиск по книгам"
                             />
                             <svg
                                 onClick={closeFinder}
@@ -88,12 +111,12 @@ function Navbar() {
                             >
                                 <path d="M149.696-221.087q-17.785 0-29.936-11.99t-12.151-29.674q0-17.684 12.151-29.597t29.936-11.913h662.043q16.81 0 28.949 12.202 12.138 12.201 12.138 29.376 0 17.967-12.138 29.782-12.139 11.814-28.949 11.814H149.696Zm0-217.261q-17.785 0-29.936-12.385-12.151-12.386-12.151-29.561 0-17.967 12.151-29.597 12.151-11.631 29.936-11.631h662.043q16.81 0 28.949 11.806 12.138 11.806 12.138 29.49 0 17.684-12.138 29.781-12.139 12.097-28.949 12.097H149.696Zm0-217.391q-17.785 0-29.936-12.386t-12.151-29.561q0-17.966 12.151-29.88 12.151-11.913 29.936-11.913h662.043q16.81 0 28.949 12.089 12.138 12.088 12.138 29.772 0 17.684-12.138 29.782-12.139 12.097-28.949 12.097H149.696Z"/>
                             </svg>
-                            <h1 className={styles.name + ' ' + styles.none}>Digital Books</h1>
+                            <h1 className={styles.name + ' ' + styles.none}>Book Bytes</h1>
                             <div className={styles.link_block + ' ' + styles.none}>
-                                <Link href={HOME} className={styles.link}>Home</Link>
-                                <Link href={CATALOG} className={styles.link}>Books</Link>
-                                <Link href={"/"} className={styles.link}>Order</Link>
-                                <Link href={CONTACT_US} className={styles.link}>Contact Us</Link>
+                                <Link href={HOME} className={styles.link}>Главная</Link>
+                                <Link href={CATALOG} className={styles.link}>Книги</Link>
+                                <Link href={ORDERS} className={styles.link}>Заказы</Link>
+                                <Link href={CONTACT_US} className={styles.link}>Контакты</Link>
                             </div>
                             <div className={styles.svg_wrap}>
                                 <svg
@@ -113,7 +136,9 @@ function Navbar() {
                                     >
                                         <path d="M198.305-98.696q-20.826 0-37.087-12.195-16.261-12.196-21.957-32.588l-118-422.782q-4-20.391 7.413-35.37 11.413-14.978 31.805-14.978h199.043l180.565-266.869q6.565-9.696 17.108-15.109Q467.739-904 479-904t21.805 5.413q10.543 5.413 16.674 15.109l179.999 266.869h204.043q19.392 0 31.088 14.978 11.695 14.979 7.13 35.37L822.304-143.479q-5.695 20.392-21.739 32.588-16.044 12.195-36.87 12.195h-565.39ZM480-290.305q28.174 0 47.761-19.587 19.587-19.587 19.587-47.76 0-28.174-19.587-47.761Q508.174-425 480-425q-28.174 0-47.761 19.587-19.587 19.587-19.587 47.761 0 28.173 19.587 47.76T480-290.305ZM359.696-616.609h238.608L478.87-790.434 359.696-616.609Z"/>
                                     </svg>
-                                    <p className={styles.count_item}>12</p>
+                                    {_basketItems.length !== 0 &&
+                                        <p className={styles.count_item}>{_basketItems.length}</p>
+                                    }
                                 </div>
                             </div>
                         </motion.div>

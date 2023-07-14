@@ -3,63 +3,124 @@ import global from "@/styles/global.module.css"
 import HeightWrapper from "@/components/HeightWrapper";
 import Grid from "@/components/Grid";
 import {useState} from "react";
-import Thanks from "@/components/Thanks";
 import {useRouter} from "next/router";
+import {wrapper} from "@/store";
+import {add_notification, checkBasketToken} from "@/functions/functions";
+import {getBooksByIds} from "@/api/bookApi";
+import {createPayment} from "@/api/orderApi";
+import {useSelector} from "react-redux";
+import {useActions} from "@/hooks/useActions";
 
-function MakeOrder() {
+function MakeOrder( {price} ) {
 
     const router = useRouter()
 
-    const [isPay, setIsPay] = useState(false)
+    const {_basketItems} = useSelector(state => state.basketItems)
+
+    const {addNotification} = useActions()
+
+    const [email, setEmail] = useState('')
+    const [name, setName] = useState('')
 
     const back = () => {
         router.back()
     }
 
+    const goToPay = () => {
+        if (name.length < 2) {
+            add_notification("Ошибка", "Длина имени не меньше 2ух символов", 1, addNotification)
+            return
+        }
+        const sIndex = email.indexOf("@")
+        const dIndex = email.indexOf(".")
+        if (email.length < 6 || sIndex === 0 || sIndex === -1 ||
+            sIndex === email.length - 1 || dIndex === 0 || dIndex === -1 || dIndex === email.length - 1) {
+            add_notification("Ошибка", "Неверный формат E-Mail", 1, addNotification)
+            return
+        }
+        const bookIds = []
+        _basketItems.forEach(item => {
+            bookIds.push(item.bookId)
+        })
+        createPayment(price, name, email, JSON.stringify(bookIds)).then(payment => {
+            router.push(payment.confirmation.confirmation_url).then()
+        })
+    }
+
     return (
         <Grid>
-            <HeightWrapper>
-                {isPay ?
-                    <Thanks />
-                    :
-                    <>
-                        <div className={global.margin} />
-                        <div className={global.up_line}>
-                            <p className={global.head}>Make order</p>
-                            <button
-                                onClick={back}
-                                className={styles.button_back}
+            <div className={global.pd}>
+                <HeightWrapper>
+                    <div className={global.margin} />
+                    <div className={styles.up_line}>
+                        <p className={global.head}>Оформление заказа</p>
+                        <button
+                            onClick={back}
+                            className={styles.button_back}
+                        >
+                            <svg
+                                className={styles.back_svg}
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 -960 960 960"
                             >
-                                <svg
-                                    className={styles.back_svg}
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 -960 960 960"
-                                >
-                                    <path d="M372-108 21-459q-5-5-7-10t-2-11q0-6 2-11t7-10l351-351q11-11 28-11t28 11q12 12 12 28.5T428-795L113-480l315 315q12 12 11.5 28.5T428-109q-12 12-28.5 12T372-108Z"/>
-                                </svg>
-                                Back
-                            </button>
+                                <path d="M372-108 21-459q-5-5-7-10t-2-11q0-6 2-11t7-10l351-351q11-11 28-11t28 11q12 12 12 28.5T428-795L113-480l315 315q12 12 11.5 28.5T428-109q-12 12-28.5 12T372-108Z"/>
+                            </svg>
+                            Назад
+                        </button>
+                    </div>
+                    <div className={styles.data_block}>
+                        <div className={styles.to_pay}>К оплате: <p className={styles.pay_price}>{price.toFixed(2)} ₽</p></div>
+                        <div className={styles.input_wrapper}>
+                            <input
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className={styles.input}
+                                type="text"
+                                placeholder="Ваше имя"
+                            />
                         </div>
-                        <div className={styles.data_block}>
-                            <div className={styles.to_pay}>To pay: <p className={styles.pay_price}>16.00 $</p></div>
-                            <div className={styles.input_wrapper}>
-                                <input className={styles.input} type="text" placeholder="Your name"/>
-                            </div>
-                            <div className={styles.input_wrapper}>
-                                <input className={styles.input} type="email" placeholder="E-Mail"/>
-                            </div>
-                            <p className={styles.ps}>A copy of the book will be sent to this E-Mail</p>
+                        <div className={styles.input_wrapper}>
+                            <input
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className={styles.input}
+                                type="email"
+                                placeholder="E-Mail"
+                            />
                         </div>
-                        <div className={styles.button_line}>
-                            <button onClick={() => setIsPay(true)} className={styles.button_pay}>
-                                Pay
-                            </button>
-                        </div>
-                    </>
-                }
-            </HeightWrapper>
+                        <p className={styles.ps}>Номер заказа будет отправлен на указанный E-Mail</p>
+                    </div>
+                    <div className={styles.button_line}>
+                        <button onClick={goToPay} className={styles.button_pay}>
+                            Оплатить
+                        </button>
+                    </div>
+                </HeightWrapper>
+            </div>
         </Grid>
     );
 }
+
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({req, res, ...etc}) => {
+    const basketItems = await checkBasketToken({req, res}, store.dispatch)
+
+    let bookIds = []
+    basketItems.forEach(item => {
+        bookIds.push(item.bookId)
+    })
+
+    const books = await getBooksByIds(JSON.stringify(bookIds))
+
+    let price = 0
+    for (let i = 0; i < basketItems.length; i++) {
+        const book = books.find(el => el.id === basketItems[i].bookId)
+        price += book.price
+    }
+
+    return {
+        props: {price}
+    }
+})
+
 
 export default MakeOrder;

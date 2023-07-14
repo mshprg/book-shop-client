@@ -58,7 +58,7 @@
     display: flex;
     justify-content: center;
     position: absolute;
-    transform: translate(1rem, -1.2rem);
+    transform: translate(1.4rem, -1.2rem);
 }
 .link_block {
     display: flex;

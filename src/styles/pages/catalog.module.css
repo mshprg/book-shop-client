@@ -1,3 +1,12 @@
+@keyframes spinner {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
 .large_blocks {
     display: inline-flex;
     justify-content: center;
@@ -125,9 +134,10 @@
 }
 .filter_block {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    margin-top: 8vh;
-    justify-content: center;
+    margin-top: 6vh;
+    align-items: center;
 }
 .filter_button {
     width: 15rem;
@@ -150,8 +160,44 @@
     margin-left: 0.4rem;
     fill: black;
 }
+.finder_text {
+    font-size: 1.3rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.finder_svg {
+    fill: rgba(0, 0, 0, 0.5);
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-left: 0.4rem;
+    transform: translateY(-0.1rem);
+}
+.finder_svg:hover {
+    cursor: pointer;
+    fill: black;
+}
+.loading {
+    fill: #CB2903;
+    width: 2rem;
+    height: 2rem;
+    animation: spinner 800ms linear infinite;
+}
 .books {
     margin-bottom: 3vh;
+    flex: 1 0 auto;
+}
+.empty_block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-height: 10vh;
+}
+.empty_text {
+    font-size: 1.6rem;
+    color: #431A20;
 }
 @media (max-width: 1399px) {
     .large_block {
@@ -218,10 +264,11 @@
         width: 10rem;
     }
     .description_block {
-        padding: 2.4rem 4rem 1.8rem 1.8rem;
+        padding: 2.4rem 4rem 1.4rem 1.8rem;
     }
     .name_block {
         font-size: 1.8rem;
+        margin-bottom: 0.3rem;
     }
     .description_book {
         font-size: 0.9rem;
@@ -256,10 +303,10 @@
         width: 8.1rem;
     }
     .description_block {
-        padding: 2rem 3.5rem 1.6rem 1.6rem;
+        padding: 2rem 2.5rem 1.6rem 1.6rem;
     }
     .name_block {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
     .description_book {
         font-size: 0.8rem;
@@ -303,36 +350,6 @@
     }
 }
 @media (max-width: 767px) {
-    .large_block {
-        width: 25.5rem;
-        height: 15rem;
-    }
-    .large_book_img {
-        height: 10rem;
-        width: 6.26rem;
-        border-radius: 0.3rem;
-    }
-    .description_block {
-        padding: 1.6rem 2.4rem 1.2rem 1.2rem;
-    }
-    .name_block {
-        font-size: 1.4rem;
-        margin-bottom: 0.2rem;
-    }
-    .add_to_card {
-        width: 7rem;
-        height: 2.6rem;
-        font-size: 0.8rem;
-    }
-    .padding_genres {
-        padding: 1.6rem;
-    }
-    .genre {
-        font-size: 0.8rem;
-        margin-right: 2rem;
-    }
-}
-@media (max-width: 575px) {
     .large_blocks {
         flex-direction: column;
     }
@@ -364,9 +381,6 @@
         height: 3.2rem;
         font-size: 1rem;
     }
-    .padding_genres {
-        padding: 2rem;
-    }
     .finder_wrapper {
         height: 3rem;
         width: 12rem;
@@ -396,5 +410,40 @@
     .filter_svg {
         width: 1.8rem;
         height: 1.8rem;
+    }
+}
+@media (max-width: 575px) {
+    .filter_block {
+        margin-top: 3vh;
+    }
+    .filter_button {
+        width: 10rem;
+        height: 3.2rem;
+        font-size: 1rem;
+    }
+    .filter_svg {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+}
+
+@media (max-width: 430px) {
+    .name_block {
+        font-size: 1.4rem;
+    }
+    .description_block {
+        padding: 2rem 2rem 1.8rem 1.8rem;
+    }
+    .description_book {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 370px) {
+    .description_book {
+        font-size: 0.8rem;
+    }
+    .name_block {
+        font-size: 1.2rem;
     }
 }

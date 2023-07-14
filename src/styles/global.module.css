@@ -21,4 +21,8 @@
     .margin {
         height: 1vh;
     }
+    .pd {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
 }

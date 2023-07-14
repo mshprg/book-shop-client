@@ -1,3 +1,6 @@
+.up_line {
+    display: flex;
+}
 .button_back {
     display: inline-flex;
     align-items: center;
@@ -80,4 +83,87 @@
 }
 .button_pay:hover {
     transform: scale(1.05);
+}
+@media (max-width: 1199px) {
+    .button_back {
+        font-size: 1.8rem;
+    }
+    .back_svg {
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+    .to_pay {
+        font-size: 2rem;
+    }
+    .pay_price {
+        font-size: 2.2rem;
+    }
+    .button_pay {
+        width: 12rem;
+        height: 3.8rem;
+        font-size: 1.6rem;
+    }
+}
+@media (max-width: 991px) {
+    .to_pay {
+        font-size: 1.8rem;
+    }
+    .pay_price {
+        font-size: 2rem;
+    }
+    .input_wrapper {
+        width: 32rem;
+        height: 3.6rem;
+        margin-top: 2.5rem;
+    }
+    .input {
+        font-size: 1.5rem;
+    }
+    .button_pay {
+        width: 11rem;
+        height: 3.6rem;
+        font-size: 1.5rem;
+    }
+}
+@media (max-width: 767px) {
+    .button_back {
+        font-size: 1.6rem;
+    }
+    .back_svg {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+    .to_pay {
+        font-size: 1.6rem;
+    }
+    .pay_price {
+        font-size: 1.8rem;
+    }
+    .input_wrapper {
+        width: 28rem;
+        height: 3.4rem;
+    }
+    .input {
+        font-size: 1.4rem;
+    }
+    .ps {
+        font-size: 1rem;
+    }
+    .button_pay {
+        width: 10rem;
+        height: 3.2rem;
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: 575px) {
+    .button_back {
+        font-size: 1.4rem;
+    }
+    .back_svg {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+    .data_block {
+        align-items: center;
+    }
 }
