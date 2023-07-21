@@ -1,4 +1,12 @@
+@keyframes out-fade {
+    from {
+        opacity: 0;
+    }
 
+    to {
+        opacity: 1;
+    }
+}
 html,
 body {
     min-width: 320px;
@@ -6,8 +14,12 @@ body {
     background-color: white;
     font-family: 'Manrope', sans-serif;
 }
+.fd {
+    animation: out-fade 200ms linear forwards;
+}
 .height {
     min-height: calc(100vh - 8rem);
+    animation: out-fade 200ms linear forwards;
 }
 ::-webkit-scrollbar {
     background-color: white;

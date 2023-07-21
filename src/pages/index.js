@@ -4,7 +4,7 @@ import Grid from "@/components/Grid";
 import HeightWrapper from "@/components/HeightWrapper";
 import {Col} from "react-bootstrap";
 import {getLastBook} from "@/api/bookApi";
-import {BOOK, CATALOG, HOST} from "@/utils/routes";
+import {BOOK, CATALOG} from "@/utils/routes";
 import {useRouter} from "next/router";
 import Link from "next/link";
 
@@ -12,7 +12,7 @@ function Home({ last_book }) {
 
     const router = useRouter()
 
-    const src = HOST + 'image/' + last_book.image
+    const src = process.env.NEXT_PUBLIC_HOST + 'image/' + last_book.image
 
     const clickViewBook = () => {
         router.push(BOOK + last_book.token).then()

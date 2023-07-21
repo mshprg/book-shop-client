@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import HeightWrapper from "@/components/HeightWrapper";
 import Thanks from "@/components/Thanks";
 import {checkForPayOrder} from "@/api/orderApi";
@@ -13,15 +13,23 @@ function Paid({ order }) {
 
     const router = useRouter()
 
-    if (!order) {
-        router.push(HOME).then()
-    }
+    useEffect(() => {
+        if (!order) {
+            router.push(HOME).then()
+        }
+    }, [order])
 
-    return (
-        <HeightWrapper>
-            <Thanks order={order} />
-        </HeightWrapper>
-    );
+    if (order) {
+        return (
+            <HeightWrapper>
+                <Thanks order={order} />
+            </HeightWrapper>
+        );
+    } else {
+        return (
+            <HeightWrapper />
+        )
+    }
 }
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async ({query, req, res, ...etc}) => {
@@ -35,7 +43,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
         order = await checkForPayOrder(token)
     }
 
-    if (basketToken) {
+    if (basketToken && order) {
         await cleanBasket(basketToken)
     }
 

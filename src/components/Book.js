@@ -1,13 +1,12 @@
 import {Col} from "react-bootstrap";
 import styles from "@/styles/components/Book.module.css"
 import {useRouter} from "next/router";
-import {BOOK, HOST} from "@/utils/routes";
+import {BOOK} from "@/utils/routes";
 import {getCookie} from "cookies-next";
 import {createBasketItem} from "@/api/basketApi";
 import {useActions} from "@/hooks/useActions";
 import {add_notification} from "@/functions/functions";
 import {useSelector} from "react-redux";
-import {motion} from "framer-motion";
 
 const Book = ({ book }) => {
 
@@ -16,7 +15,7 @@ const Book = ({ book }) => {
     const {addBasketItem, addNotification} = useActions()
     const {_basketItems} = useSelector(state => state.basketItems)
 
-    const src = HOST + 'image/' + book.image
+    const src = process.env.NEXT_PUBLIC_HOST + 'image/' + book.image
 
     const clickOnBook = () => {
         router.push(BOOK + book.token).then()
@@ -38,28 +37,28 @@ const Book = ({ book }) => {
 
     return (
         <Col
+            key={book.id + '1'}
             xxl={3} xl={3} lg={3} md={3} sm={4} xs={6}
             className={styles.block}
         >
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-            >
+            <div key={book.id + '2'} className="fd">
                 <img
+                    key={book.id + '3'}
                     onClick={clickOnBook}
                     src={src}
                     className={styles.image}
                     alt="book preview"
                 />
-                <h1 className={styles.name}>{book.name}</h1>
-                <p className={styles.price}>{book.price.toFixed(2)} ₽</p>
+                <h1 key={book.id + '4'} className={styles.name}>{book.name}</h1>
+                <p key={book.id + '5'} className={styles.price}>{book.price.toFixed(2)} ₽</p>
                 <button
+                    key={book.id + '6'}
                     onClick={addToCart}
                     className={styles.add_to_card}
                 >
                     В корзину
                 </button>
-            </motion.div>
+            </div>
         </Col>
     );
 };

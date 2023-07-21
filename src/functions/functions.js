@@ -39,9 +39,9 @@ export const checkBasketToken = async ({ req, res }, dispatch) => {
     return basketItems
 }
 
-export const routerPushCatalogQueryParams = (router, page, max, min, genreIds, finder) => {
-    router.push({
+export const routerPushCatalogQueryParams = async (router, page, max, min, genreIds, finder) => {
+    await router.push({
         pathname: CATALOG,
         query: { page: page, max: max, min: min, gIds: genreIds, finder: finder}
-    }).then()
+    })
 }

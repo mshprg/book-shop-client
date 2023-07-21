@@ -8,6 +8,7 @@
     box-shadow: 0 0.4rem 1.5rem 0 rgba(0, 0, 0, 0.08);
     display: flex;
     align-items: center;
+    z-index: 3;
 }
 .row {
     display: flex;

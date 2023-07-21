@@ -8,14 +8,12 @@ import {useEffect, useState} from "react";
 import Filters from "@/components/Filters";
 import {getBooksByFilter, getLastBook, getPrices} from "@/api/bookApi";
 import {getAllGenres} from "@/api/genreApi";
-import {HOST} from "@/utils/routes";
 import {wrapper} from "@/store";
 import {add_notification, checkBasketToken, routerPushCatalogQueryParams} from "@/functions/functions";
 import {useActions} from "@/hooks/useActions";
 import {useSelector} from "react-redux";
 import {getCookie} from "cookies-next";
 import {createBasketItem} from "@/api/basketApi";
-import {SET_CURRENT_PAGE, SET_PAGES_COUNT} from "@/store/reducers/pageReducer/pageReducerActions";
 import {SET_FIND_BOOK} from "@/store/reducers/finderReducer/finderReducerActions";
 import {useRouter} from "next/router";
 
@@ -28,6 +26,9 @@ function Catalog({ maxQ, minQ, max, min, genreIds, queryPage, pageCount, books, 
     const [findHeight, setFindHeight] = useState("0")
     const [findOpacity, setFindOpacity] = useState(0)
     const [findDisplay, setFindDisplay] = useState("none")
+
+    const [finderGenres, setFinderGenres] = useState('')
+    const [filteredGenres, setFilteredGenres] = useState(genres)
 
     const [page, setPage] = useState({page: queryPage, count: pageCount})
 
@@ -46,13 +47,10 @@ function Catalog({ maxQ, minQ, max, min, genreIds, queryPage, pageCount, books, 
     }, [books])
 
     useEffect(() => {
-        //setPage({...page, page: 1})
-        routerPushCatalogQueryParams(router, 1, filters.max, filters.min, JSON.stringify(filters.genreIds), find)
+        routerPushCatalogQueryParams(router, 1, filters.max, filters.min, JSON.stringify(filters.genreIds), find).then(() => {
+            setPage({page: queryPage, count: pageCount})
+        })
     }, [filters, find])
-
-    useEffect(() => {
-        routerPushCatalogQueryParams(router, page.page, filters.max, filters.min, JSON.stringify(filters.genreIds), find)
-    }, [page])
 
     useEffect(() => {
         if (find) {
@@ -63,6 +61,16 @@ function Catalog({ maxQ, minQ, max, min, genreIds, queryPage, pageCount, books, 
             }, 1000)
         }
     }, [find])
+
+    useEffect(() => {
+        if (finderGenres) {
+            setFilteredGenres(Object.values(genres).filter(genre => {
+                return genre.name.toLowerCase().includes(finderGenres.toLowerCase())
+            }))
+        } else {
+            setFilteredGenres(genres)
+        }
+    }, [finderGenres])
 
     const updatePage = (value) => {
         setPage({...page, page: value})
@@ -105,7 +113,7 @@ function Catalog({ maxQ, minQ, max, min, genreIds, queryPage, pageCount, books, 
         }
     }
 
-    const src_last_book = HOST + 'image/' + last_book.image
+    const src_last_book = process.env.NEXT_PUBLIC_HOST + 'image/' + last_book.image
 
     return (
         <Grid>
@@ -152,23 +160,19 @@ function Catalog({ maxQ, minQ, max, min, genreIds, queryPage, pageCount, books, 
                             <div className={styles.finder_genres_block}>
                                 <div className={styles.finder_wrapper}>
                                     <input
+                                        value={finderGenres}
+                                        onChange={(e) => setFinderGenres(e.target.value)}
                                         type="text"
                                         className={styles.finder_genres}
                                         placeholder="Поиск по жанрам..."
                                     />
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        className={styles.find_svg}
-                                    >
-                                        <path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                                    </svg>
                                 </div>
                             </div>
                         </div>
                         <div className={styles.genres_list}>
-                            {genres.map(genre =>
+                            {filteredGenres.map(genre =>
                                 <p
+                                    key={genre.id}
                                     onClick={() => addGenre(genre.id)}
                                     className={styles.genre}
                                 >
@@ -204,7 +208,6 @@ function Catalog({ maxQ, minQ, max, min, genreIds, queryPage, pageCount, books, 
                                 className={styles.filter_svg}
                                 style={{fill: '#CB2903'}}
                                 xmlns="http://www.w3.org/2000/svg"
-                                enable-background="new 0 0 24 24"
                                 viewBox="0 0 24 24"
                             >
                                 <g><path d="M0,0h24 M24,24H0" fill="none"/><path d="M4.25,5.61C6.57,8.59,10,13,10,13v5c0,1.1,0.9,2,2,2h0c1.1,0,2-0.9,2-2v-5c0,0,3.43-4.41,5.75-7.39 C20.26,4.95,19.79,4,18.95,4H5.04C4.21,4,3.74,4.95,4.25,5.61z"/><path d="M0,0h24v24H0V0z" fill="none"/></g>
@@ -213,7 +216,6 @@ function Catalog({ maxQ, minQ, max, min, genreIds, queryPage, pageCount, books, 
                             <svg
                                 className={styles.filter_svg}
                                 xmlns="http://www.w3.org/2000/svg"
-                                enable-background="new 0 0 24 24"
                                 viewBox="0 0 24 24"
                             >
                                 <g><path d="M0,0h24 M24,24H0" fill="none"/><path d="M4.25,5.61C6.57,8.59,10,13,10,13v5c0,1.1,0.9,2,2,2h0c1.1,0,2-0.9,2-2v-5c0,0,3.43-4.41,5.75-7.39 C20.26,4.95,19.79,4,18.95,4H5.04C4.21,4,3.74,4.95,4.25,5.61z"/><path d="M0,0h24v24H0V0z" fill="none"/></g>
@@ -226,6 +228,7 @@ function Catalog({ maxQ, minQ, max, min, genreIds, queryPage, pageCount, books, 
                         <>
                             {booksArray.map(book =>
                                 <Book
+                                    key={book.id}
                                     book={book}
                                 />
                             )}
@@ -241,7 +244,7 @@ function Catalog({ maxQ, minQ, max, min, genreIds, queryPage, pageCount, books, 
                     }
                 </div>
                 {booksArray.length !== 0 &&
-                    <Pagination pageState={page} setPage={(value) => updatePage(value)} />
+                    <Pagination pageState={{page: queryPage, count: pageCount}} setPage={(value) => updatePage(value)} />
                 }
             </HeightWrapper>
         </Grid>
@@ -277,8 +280,6 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
     const books_row = await getBooksByFilter(page, maxQ, minQ, JSON.stringify(genreIds), finder)
     const books = books_row.rows
 
-    store.dispatch({type: SET_PAGES_COUNT, payload: books_row.pageCount})
-    store.dispatch({type: SET_CURRENT_PAGE, payload: page})
     store.dispatch({type: SET_FIND_BOOK, payload: finder})
 
     const genres = await getAllGenres()

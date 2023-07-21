@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {motion} from "framer-motion";
+import {motion, useSpring} from "framer-motion";
 import style from "@/styles/components/Notifications.module.css";
 import {useSelector} from "react-redux";
 import {useActions} from "@/hooks/useActions";
@@ -19,7 +19,7 @@ const Notifications = () => {
     return (
         <div className={style.list}>
             {array.map(el =>
-                <Notification notification={el} array={notifications} />
+                <Notification key={el.id} notification={el} array={notifications} />
             )}
         </div>
     );
@@ -28,7 +28,7 @@ const Notifications = () => {
 const Notification = ({notification}) => {
 
     const [x, setX] = useState("0")
-    const [height, setHeight] = useState(100)
+    const height = useSpring(100)
     const [display, setDisplay] = useState("flex")
 
     const {deleteNotification} = useActions()
@@ -37,11 +37,11 @@ const Notification = ({notification}) => {
         useEffect(() => {
             const width = window.innerWidth
             if (width > 991 && width <= 1199) {
-                setHeight(80)
+                height.set(80)
             } else if (width > 575 && width <= 991) {
-                setHeight(70)
+                height.set(70)
             } else if (width <= 575) {
-                setHeight(77)
+                height.set(77)
             }
         }, [window])
     }
@@ -55,7 +55,7 @@ const Notification = ({notification}) => {
     const closeNotification = () => {
         setX("-110%")
         setTimeout(() => {
-            setHeight(0)
+            height.set(0)
             setTimeout(() => {
                 setDisplay("none")
                 deleteNotification(notification)
@@ -65,9 +65,12 @@ const Notification = ({notification}) => {
 
     return (
         <motion.div
+            key={notification.id}
             animate={{
-                height,
                 display,
+            }}
+            style={{
+                height,
             }}
             transition={{
                 type: "spring",

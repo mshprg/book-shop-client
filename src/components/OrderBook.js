@@ -1,11 +1,9 @@
 import styles from "@/styles/components/OrderBook.module.css"
-import Image from "next/image";
 import {downloadBook} from "@/api/bookApi";
-import {HOST} from "@/utils/routes";
 
 const OrderBook = ({ itemRef, book }) => {
 
-    const src = HOST + 'image/' + book.image
+    const src = process.env.NEXT_PUBLIC_HOST + 'image/' + book.image
 
     const downloadPdf = () => {
         downloadBook(book.file, ".pdf").then(data => {
@@ -32,31 +30,39 @@ const OrderBook = ({ itemRef, book }) => {
     }
 
     return (
-        <div ref={itemRef}>
+        <div key={book.id + '1'} ref={itemRef}>
             <div className={styles.block}>
                 <img
+                    key={book.id + '2'}
                     className={styles.image}
                     src={src}
                     alt="book image"
                 />
-                <div className={styles.description_block}>
-                    <p className={styles.name}>{book.name}</p>
-                    <p className={styles.description}>
+                <div key={book.id + '3'} className={styles.description_block}>
+                    <p key={book.id + '4'} className={styles.name}>{book.name}</p>
+                    <p key={book.id + '5'} className={styles.description}>
                         {book.description}
                     </p>
                     <div>
                         {book.genres.map(genre =>
-                            <p className={styles.genre}>{genre.name}</p>
+                            <p
+                                key={genre.id}
+                                className={styles.genre}
+                            >
+                                {genre.name}
+                            </p>
                         )}
                     </div>
-                    <div className={styles.downloads}>
+                    <div key={book.id + '7'} className={styles.downloads}>
                         <p
+                            key={book.id + '8'}
                             onClick={downloadPdf}
                             className={styles.download + ' ' + styles.pdf}
                         >
                             .pdf
                         </p>
                         <p
+                            key={book.id + '9'}
                             onClick={downloadEpub}
                             className={styles.download + ' ' + styles.epub}
                         >

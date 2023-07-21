@@ -46,7 +46,11 @@ function Order({ order, books }) {
                             className={styles.book_list}
                         >
                             {books.map(book =>
-                                <OrderBook itemRef={itemRef} book={book} />
+                                <OrderBook
+                                    key={book.id}
+                                    itemRef={itemRef}
+                                    book={book}
+                                />
                             )}
                         </div>
                     </div>

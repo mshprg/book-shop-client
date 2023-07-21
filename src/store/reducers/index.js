@@ -2,13 +2,11 @@ import {combineReducers} from "redux";
 import {HYDRATE} from "next-redux-wrapper";
 import {notificationReducer} from "@/store/reducers/notificationReducer/notificationReducer";
 import {basketItemReducer} from "@/store/reducers/basketReducer/basketItemReducer";
-import {pageReducer} from "@/store/reducers/pageReducer/pageReducer";
 import {finderReducer} from "@/store/reducers/finderReducer/finderReducer";
 
 const rootReducer = combineReducers({
     notifications: notificationReducer,
     basketItems: basketItemReducer,
-    page: pageReducer,
     finder: finderReducer
 })
 

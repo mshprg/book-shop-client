@@ -2,6 +2,8 @@ import styles from "@/styles/pages/contact-us.module.css"
 import global from "@/styles/global.module.css"
 import Grid from "@/components/Grid";
 import HeightWrapper from "@/components/HeightWrapper";
+import Link from "next/link";
+import {OFFER} from "@/utils/routes";
 
 function ContactUs() {
     return (
@@ -17,10 +19,13 @@ function ContactUs() {
                     <div className={styles.wrap}>
                         <div className={styles.det_wrap}>
                             <div className={styles.email_wrapper}>
-                                <a href="mailto:bookbytesmail@yandex.ru?subject=Support" className={styles.email}>bookbytesmail@yandex.ru</a>
+                                <a href="mailto:bookbytes@yandex.ru?subject=Support" className={styles.email}>bookbytes@yandex.ru</a>
                             </div>
                             <p className={styles.det_text}>Подробно опишите проблему</p>
                         </div>
+                    </div>
+                    <div className={styles.offer_block}>
+                        <Link href={OFFER} className={styles.offer}>Публичная оферта</Link>
                     </div>
                 </HeightWrapper>
             </div>

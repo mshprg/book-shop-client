@@ -1,8 +1,7 @@
 import axios from 'axios'
-import {HOST} from "@/utils/routes";
 
 const $host = axios.create({
-    baseURL: HOST
+    baseURL: process.env.NEXT_PUBLIC_HOST
 })
 
 export {

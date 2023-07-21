@@ -77,10 +77,10 @@ function Orders() {
                 <div className={styles.order_list}>
                     {order &&
                         <motion.div
-                            className={styles.order}
+                            className={styles.order + ' fd'}
                             onClick={clickOrder}
-                            initial={{opacity: 0, y: "1vh"}}
-                            animate={{opacity: 1, y: 0}}
+                            initial={{y: "1vh"}}
+                            animate={{y: 0}}
                         >
                             <div className={styles.line}>
                                 <p className={styles.order_number}>№{order.number}</p>

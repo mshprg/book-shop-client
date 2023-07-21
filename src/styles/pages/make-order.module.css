@@ -67,7 +67,28 @@
 }
 .button_line {
     display: flex;
+    align-items: center;
     margin-bottom: 10vh;
+}
+.offer_block {
+    display: flex;
+    align-items: center;
+}
+.check {
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    border: 0.2rem solid black;
+    margin-right: 1.5rem;
+}
+.check:hover {
+    cursor: pointer;
+}
+.check_sl {
+    background-color: black;
+}
+.offer_text {
+    font-size: 1.4rem;
 }
 .button_pay {
     width: 13rem;
@@ -124,6 +145,14 @@
         height: 3.6rem;
         font-size: 1.5rem;
     }
+    .check {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 1rem;
+    }
+    .offer_text {
+        font-size: 1.2rem;
+    }
 }
 @media (max-width: 767px) {
     .button_back {
@@ -165,5 +194,13 @@
     }
     .data_block {
         align-items: center;
+    }
+    .check {
+        width: 1.4rem;
+        height: 1.4rem;
+        margin-right: 0.7rem;
+    }
+    .offer_text {
+        font-size: 1.1rem;
     }
 }

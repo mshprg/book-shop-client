@@ -10,18 +10,12 @@ import BasketBook from "@/components/BasketBook";
 import {wrapper} from "@/store";
 import {checkBasketToken} from "@/functions/functions";
 import {getBooksByIds} from "@/api/bookApi";
-import {removeBasketItem} from "@/api/basketApi";
-import {useActions} from "@/hooks/useActions";
 import Link from "next/link";
-import {useSelector} from "react-redux";
 import {getAllGenreByBookId} from "@/api/genreApi";
 
 function Basket({ basketBooks }) {
 
     const router = useRouter()
-
-    const {setBasketItems} = useActions()
-    const {_basketItems} = useSelector(state => state.basketItems)
 
     const [basketItems, setArrayItems] = useState(basketBooks)
     const [totalPrice, setTotalPrice] = useState(0)
@@ -33,28 +27,24 @@ function Basket({ basketBooks }) {
     const itemRef = useRef(null)
 
     useEffect(() => {
-        if (layoutRef && lineRef && itemRef && basketItems.length !== 0) {
+        if (layoutRef && lineRef && itemRef.current && basketItems.length !== 0) {
             const availableHeight = layoutRef.current.getBoundingClientRect().height - lineRef.current.getBoundingClientRect().height
             const itemHeight = itemRef.current.getBoundingClientRect().height
             let count = Math.trunc(availableHeight / itemHeight)
             if (count < 1) count = 1
-            setHeight(count * itemHeight - 2)
-
-            let fullPrice = 0
-            basketItems.forEach(item => fullPrice += item.price)
-            setTotalPrice(fullPrice)
+            setHeight(count * itemHeight)
         }
+        let fullPrice = 0
+        basketItems.forEach(item => fullPrice += item.price)
+        setTotalPrice(fullPrice)
     }, [layoutRef, lineRef, itemRef, basketItems])
 
     const toMakeOrder = () => {
         router.push(MAKE_ORDER).then()
     }
 
-    const deleteItem = (id) => {
-        removeBasketItem(id).then(() => {
-            setBasketItems(_basketItems.filter(el => el.id !== id))
-            setArrayItems(basketItems.filter(el => el.basketItemId !== id))
-        })
+    const updateBasketItems = (value) => {
+        setArrayItems(value)
     }
 
     return (
@@ -83,26 +73,23 @@ function Basket({ basketBooks }) {
                                 >
                                     {basketItems.map(item =>
                                         <BasketBook
+                                            key={item.basketItemId}
                                             router={router}
                                             items={basketItems}
                                             item={item}
                                             itemRef={itemRef}
-                                            deleteItem={(value) => deleteItem(value)}
+                                            setArrayItems={(value) => updateBasketItems(value)}
                                         />
                                     )}
                                 </div>
                             </div>
                         </>
                         :
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className={styles.empty_basket_block}
-                        >
+                        <div className={styles.empty_basket_block + " fd"}>
                             <div className={styles.empty_basket_text}>
                                 Корзина пуста <br/> <Link href={CATALOG} className={styles.href}>Добавьте книги в корзину</Link>
                             </div>
-                        </motion.div>
+                        </div>
                     }
                 </HeightWrapper>
             </Grid>

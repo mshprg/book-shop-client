@@ -44,8 +44,10 @@ function Navbar() {
     const findBook = () => {
         if (text) {
             if (router.pathname !== CATALOG) {
-                router.push(CATALOG).then(() => {
-                    setFinderText(text)
+                router.push({
+                    pathname: CATALOG,
+                    query: {finder: text}
+                }).then(() => {
                     closeFinder()
                     setText("")
                 })
@@ -137,7 +139,7 @@ function Navbar() {
                                         <path d="M198.305-98.696q-20.826 0-37.087-12.195-16.261-12.196-21.957-32.588l-118-422.782q-4-20.391 7.413-35.37 11.413-14.978 31.805-14.978h199.043l180.565-266.869q6.565-9.696 17.108-15.109Q467.739-904 479-904t21.805 5.413q10.543 5.413 16.674 15.109l179.999 266.869h204.043q19.392 0 31.088 14.978 11.695 14.979 7.13 35.37L822.304-143.479q-5.695 20.392-21.739 32.588-16.044 12.195-36.87 12.195h-565.39ZM480-290.305q28.174 0 47.761-19.587 19.587-19.587 19.587-47.76 0-28.174-19.587-47.761Q508.174-425 480-425q-28.174 0-47.761 19.587-19.587 19.587-19.587 47.761 0 28.173 19.587 47.76T480-290.305ZM359.696-616.609h238.608L478.87-790.434 359.696-616.609Z"/>
                                     </svg>
                                     {_basketItems.length !== 0 &&
-                                        <p className={styles.count_item}>{_basketItems.length}</p>
+                                        <p className={styles.count_item + ' fd'}>{_basketItems.length}</p>
                                     }
                                 </div>
                             </div>

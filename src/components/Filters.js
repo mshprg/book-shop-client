@@ -7,9 +7,6 @@ const Filters = ({visible, setVisible, save, setSaveFilters, genres, maxDt, minD
 
     const profileRef = useRef(null)
 
-    const min = save.min
-    const max = save.max
-
     const [minPrice, setMinPrice] = useState(save.min)
     const [maxPrice, setMaxPrice] = useState(save.max)
 
@@ -76,7 +73,7 @@ const Filters = ({visible, setVisible, save, setSaveFilters, genres, maxDt, minD
                         <div className={styles.price_line}>
                             <p className={styles.head_text}>Цена</p>
                             <div className={styles.range_slider_block}>
-                                <p className={styles.price}>{minPrice.toFixed(2)} ₽</p>
+                                <p className={styles.price}>{minPrice.toFixed(0)} ₽</p>
                                 <Slider
                                     min={minDt}
                                     max={maxDt}
@@ -96,12 +93,14 @@ const Filters = ({visible, setVisible, save, setSaveFilters, genres, maxDt, minD
                                     <>
                                         {currentGenres.includes(genre.id) ?
                                             <p
+                                                key={genre.id + 1}
                                                 onClick={() => deleteGenre(genre.id)}
                                                 className={styles.genre + ' ' + styles.genre_current}
                                             >
                                                 {genre.name}</p>
                                             :
                                             <p
+                                                key={genre.id + 2}
                                                 onClick={() => addGenre(genre.id)}
                                                 className={styles.genre}
                                             >

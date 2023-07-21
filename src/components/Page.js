@@ -1,18 +1,15 @@
 import styles from "@/styles/components/Page.module.css"
-import {useSelector} from "react-redux";
-import {useActions} from "@/hooks/useActions";
 import {useRouter} from "next/router";
 import {CATALOG} from "@/utils/routes";
 
-const Page = ({ currentPage, page, setPage }) => {
+const Page = ({ currentPage, page }) => {
 
     const router = useRouter()
 
     const setCurrentPage = () => {
-        setPage(page)
         router.push({
             pathname: CATALOG,
-            query: { page: page }
+            query: {...router.query, page: page}
         }).then()
     }
 
@@ -20,7 +17,7 @@ const Page = ({ currentPage, page, setPage }) => {
         <>
             {page === currentPage ?
                 <p
-                    onClick={setPage}
+                    key={page + '1'}
                     style={{color: "white", backgroundColor: "black"}}
                     className={styles.block}
                 >
@@ -28,6 +25,7 @@ const Page = ({ currentPage, page, setPage }) => {
                 </p>
                 :
                 <p
+                    key={page + '2'}
                     onClick={setCurrentPage}
                     className={styles.block}
                 >

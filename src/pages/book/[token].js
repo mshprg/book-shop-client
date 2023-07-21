@@ -57,7 +57,12 @@ function Book({ book, genres }) {
                         </p>
                         <div className={styles.genres}>
                             {genres.map(genre =>
-                                <p className={styles.genre}>{genre.name}</p>
+                                <p
+                                    key={genre.id}
+                                    className={styles.genre}
+                                >
+                                    {genre.name}
+                                </p>
                             )}
                         </div>
                         <div className={styles.price_line}>

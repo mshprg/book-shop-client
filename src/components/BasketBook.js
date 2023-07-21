@@ -2,22 +2,31 @@ import styles from "@/styles/components/BasketBook.module.css";
 import {motion, useMotionValue} from "framer-motion";
 import {useEffect, useState} from "react";
 import {BOOK, HOST} from "@/utils/routes";
+import {removeBasketItem} from "@/api/basketApi";
+import {useActions} from "@/hooks/useActions";
+import {useSelector} from "react-redux";
 
-const BasketBook = ({ itemRef, item, router, deleteItem }) => {
+const BasketBook = ({ itemRef, item, items, router, setArrayItems }) => {
+
+    const {setBasketItems} = useActions()
+    const {_basketItems} = useSelector(state => state.basketItems)
 
     const [opacity, setOpacity] = useState(1)
-    const [height, setHeight] = useState(0)
+    const height = useMotionValue(0)
     const [display, setDisplay] = useState(true)
 
-    const src = HOST + 'image/' + item.image
+    const src = process.env.NEXT_PUBLIC_HOST + 'image/' + item.image
 
     const deleteCurrentItem = () => {
         setOpacity(0)
         setTimeout(() => {
             setDisplay(false)
-            setHeight(0)
+            height.set(1)
             setTimeout(() => {
-                deleteItem(item.basketItemId)
+                removeBasketItem(item.basketItemId).then(() => {
+                    setBasketItems(_basketItems.filter(el => el.id !== item.basketItemId))
+                    setArrayItems(items.filter(el => el.basketItemId !== item.basketItemId))
+                })
             }, 400)
         }, 400)
     }
@@ -28,20 +37,24 @@ const BasketBook = ({ itemRef, item, router, deleteItem }) => {
 
     useEffect(() => {
         if (itemRef) {
-            setHeight(itemRef.current.getBoundingClientRect().height)
+            height.set(itemRef.current.getBoundingClientRect().height)
         }
     }, [itemRef])
 
     return (
         <motion.div
+            key={item.basketItemId + '1'}
             animate={{
                 opacity,
-                height,
+            }}
+            style={{
+                height: height.current === 0 ? "auto" : height,
             }}
             ref={itemRef}
             className={styles.basket_item}
         >
             <img
+                key={item.basketItemId + '2'}
                 onClick={clickOnItem}
                 style={{display: display ? "block" : "none"}}
                 alt="book image"
@@ -49,13 +62,15 @@ const BasketBook = ({ itemRef, item, router, deleteItem }) => {
                 className={styles.book_image + ' ' + styles.padding_item}
             />
             <div
+                key={item.basketItemId + '3'}
                 style={{display: display ? "flex" : "none"}}
                 className={styles.info_block + ' ' + styles.padding_item}
             >
-                <div className={styles.name_line}>
-                    <h1 className={styles.name}>{item.name}</h1>
+                <div key={item.basketItemId + '4'} className={styles.name_line}>
+                    <h1 key={item.basketItemId + '5'} className={styles.name}>{item.name}</h1>
                     <div className={styles.delete}>
                         <svg
+                            key={item.basketItemId + '6'}
                             onClick={deleteCurrentItem}
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 -960 960 960"
@@ -65,15 +80,26 @@ const BasketBook = ({ itemRef, item, router, deleteItem }) => {
                         </svg>
                     </div>
                 </div>
-                <p className={styles.description}>
+                <p
+                    key={item.basketItemId + '7'}
+                    className={styles.description}
+                >
                     {item.description}
                 </p>
                 {item.genres.map(genre =>
-                    <div className={styles.genres}>
+                    <div
+                        key={genre.id + '0'}
+                        className={styles.genres}
+                    >
                         <p className={styles.genre}>{genre.name}</p>
                     </div>
                 )}
-                <p className={styles.price}>{item.price.toFixed(2)} ₽</p>
+                <p
+                    key={item.basketItemId + '8'}
+                    className={styles.price}
+                >
+                    {item.price.toFixed(2)} ₽
+                </p>
             </div>
         </motion.div>
     );
