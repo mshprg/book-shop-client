@@ -3,8 +3,19 @@ import global from "@/styles/global.module.css"
 import HeightWrapper from "@/components/HeightWrapper";
 import Grid from "@/components/Grid";
 import Link from "next/link";
+import {useEffect, useState} from "react";
 
 function Offer() {
+
+    const [text, setText] = useState('')
+
+    useEffect(() => {
+        setTimeout(() => {
+            setText('Анцупов М. С. (ИНН 772840489497)')
+        }, 100)
+    }, [])
+
+
     return (
         <div className={global.pd}>
             <Grid>
@@ -13,7 +24,7 @@ function Offer() {
                     <h1 className={global.head}>Публичная оферта</h1>
                     <p className={styles.small}>на приобретение права на использование электронной книги</p>
                     <p className={styles.description} style={{marginTop: 0}}>
-                        Анцупов М. С. (ИНН 772840489497), именуемый в дальнейшем «Продавец», настоящим в порядке публичной оферты предлагает
+                        {text}, именуемый в дальнейшем «Продавец», настоящим в порядке публичной оферты предлагает
                         заключить на приведенных ниже условиях договор в отношении приобретения электронной книги (далее — «Книга») с любым
                         лицом (далее — «Приобретатель») — пользователем сети Интернет и посетителем сайта <Link href="https://bookbytes.ru" className={styles.href}>https://bookbytes.ru</Link> выразившим
                         намерение принять условия настоящего Договора. Продавец и Приобретатель совместно именуются «Стороны».
