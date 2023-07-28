@@ -20,7 +20,7 @@ export const checkBasketToken = async ({ req, res }, dispatch) => {
     const tk = Date.now().toString().split('').reverse().join('') + random
 
     let basketItems = []
-    if (token) {
+    if (token && Number(token)) {
         token = token.toString()
         const basket = await getBasketByToken(token)
         if (basket) {

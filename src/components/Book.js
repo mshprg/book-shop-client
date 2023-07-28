@@ -18,7 +18,9 @@ const Book = ({ book }) => {
     const src = process.env.NEXT_PUBLIC_HOST + 'image/' + book.image
 
     const clickOnBook = () => {
-        router.push(BOOK + book.token).then()
+        router.push(BOOK + book.token).then(() => {
+            console.log('push')
+        })
     }
 
     const addToCart = () => {

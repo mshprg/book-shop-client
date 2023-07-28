@@ -12,6 +12,8 @@ import {useSelector} from "react-redux";
 import {useActions} from "@/hooks/useActions";
 import Link from "next/link";
 import {BASKET, CATALOG, OFFER} from "@/utils/routes";
+import Head from "next/head";
+import React from "@types/react";
 
 function MakeOrder( {price} ) {
 
@@ -71,60 +73,69 @@ function MakeOrder( {price} ) {
 
     if (price !== 0) {
         return (
-            <Grid>
-                <div className={global.pd}>
-                    <HeightWrapper>
-                        <div className={global.margin} />
-                        <div className={styles.up_line}>
-                            <p className={global.head}>Оформление заказа</p>
-                            <button
-                                onClick={back}
-                                className={styles.button_back}
-                            >
-                                <svg
-                                    className={styles.back_svg}
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 -960 960 960"
+            <>
+                <Head>
+                    <title>Оформить заказ</title>
+                    <meta name="description" content="Оформит заказ" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                    <meta charSet="UTF-8" />
+                    <meta name="robots" content="noindex, follow" />
+                </Head>
+                <Grid>
+                    <div className={global.pd}>
+                        <HeightWrapper>
+                            <div className={global.margin} />
+                            <div className={styles.up_line}>
+                                <p className={global.head}>Оформление заказа</p>
+                                <button
+                                    onClick={back}
+                                    className={styles.button_back}
                                 >
-                                    <path d="M372-108 21-459q-5-5-7-10t-2-11q0-6 2-11t7-10l351-351q11-11 28-11t28 11q12 12 12 28.5T428-795L113-480l315 315q12 12 11.5 28.5T428-109q-12 12-28.5 12T372-108Z"/>
-                                </svg>
-                                Назад
-                            </button>
-                        </div>
-                        <div className={styles.data_block}>
-                            <div className={styles.to_pay}>К оплате: <p className={styles.pay_price}>{price.toFixed(2)} ₽</p></div>
-                            <div className={styles.input_wrapper}>
-                                <input
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    className={styles.input}
-                                    type="text"
-                                    placeholder="Ваше имя"
-                                />
+                                    <svg
+                                        className={styles.back_svg}
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 -960 960 960"
+                                    >
+                                        <path d="M372-108 21-459q-5-5-7-10t-2-11q0-6 2-11t7-10l351-351q11-11 28-11t28 11q12 12 12 28.5T428-795L113-480l315 315q12 12 11.5 28.5T428-109q-12 12-28.5 12T372-108Z"/>
+                                    </svg>
+                                    Назад
+                                </button>
                             </div>
-                            <div className={styles.input_wrapper}>
-                                <input
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    className={styles.input}
-                                    type="email"
-                                    placeholder="E-Mail"
-                                />
+                            <div className={styles.data_block}>
+                                <div className={styles.to_pay}>К оплате: <p className={styles.pay_price}>{price.toFixed(2)} ₽</p></div>
+                                <div className={styles.input_wrapper}>
+                                    <input
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                        className={styles.input}
+                                        type="text"
+                                        placeholder="Ваше имя"
+                                    />
+                                </div>
+                                <div className={styles.input_wrapper}>
+                                    <input
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        className={styles.input}
+                                        type="email"
+                                        placeholder="E-Mail"
+                                    />
+                                </div>
+                                <p className={styles.ps}>Номер заказа будет отправлен на указанный E-Mail</p>
                             </div>
-                            <p className={styles.ps}>Номер заказа будет отправлен на указанный E-Mail</p>
-                        </div>
-                        <div className={styles.button_line}>
-                            <div className={styles.offer_block}>
-                                <div onClick={confirmOffer} className={styles.check + ' ' + (checkOffer ? styles.check_sl : '')}/>
-                                <div className={styles.offer_text}>Я принимаю условия <Link href={OFFER}>оферты</Link></div>
+                            <div className={styles.button_line}>
+                                <div className={styles.offer_block}>
+                                    <div onClick={confirmOffer} className={styles.check + ' ' + (checkOffer ? styles.check_sl : '')}/>
+                                    <div className={styles.offer_text}>Я принимаю условия <Link href={OFFER}>оферты</Link></div>
+                                </div>
+                                <button onClick={goToPay} className={styles.button_pay}>
+                                    Оплатить
+                                </button>
                             </div>
-                            <button onClick={goToPay} className={styles.button_pay}>
-                                Оплатить
-                            </button>
-                        </div>
-                    </HeightWrapper>
-                </div>
-            </Grid>
+                        </HeightWrapper>
+                    </div>
+                </Grid>
+            </>
         );
     } else {
         return (

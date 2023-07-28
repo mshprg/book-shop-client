@@ -86,14 +86,16 @@ const BasketBook = ({ itemRef, item, items, router, setArrayItems }) => {
                 >
                     {item.description}
                 </p>
-                {item.genres.map(genre =>
-                    <div
-                        key={genre.id + '0'}
-                        className={styles.genres}
-                    >
-                        <p className={styles.genre}>{genre.name}</p>
-                    </div>
-                )}
+                <div>
+                    {item.genres.map(genre =>
+                        <div
+                            key={genre.id + '0'}
+                            className={styles.genres}
+                        >
+                            <p className={styles.genre}>{genre.name}</p>
+                        </div>
+                    )}
+                </div>
                 <p
                     key={item.basketItemId + '8'}
                     className={styles.price}

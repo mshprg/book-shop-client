@@ -77,7 +77,7 @@ const Filters = ({visible, setVisible, save, setSaveFilters, genres, maxDt, minD
                                 <Slider
                                     min={minDt}
                                     max={maxDt}
-                                    step={10}
+                                    step={1}
                                     minPrice={minPrice}
                                     maxPrice={maxPrice}
                                     setMaxPrice={(value) => updateMaxPrice(value)}

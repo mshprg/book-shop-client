@@ -8,6 +8,7 @@ import {useRouter} from "next/router";
 import Menu from "@/components/Menu";
 import {useSelector} from "react-redux";
 import {useActions} from "@/hooks/useActions";
+import {routerPushCatalogQueryParams} from "@/functions/functions";
 
 function Navbar() {
 
@@ -18,7 +19,7 @@ function Navbar() {
     const [finderOpacity, setFinderOpacity] = useState(0)
 
     const {_basketItems} = useSelector(state => state.basketItems)
-    const {setFinderText, setCurrentPage} = useActions()
+    const {setFinderText} = useActions()
 
     const [isOpenMenu, setIsOpenMenu] = useState(false)
 
@@ -43,20 +44,10 @@ function Navbar() {
 
     const findBook = () => {
         if (text) {
-            if (router.pathname !== CATALOG) {
-                router.push({
-                    pathname: CATALOG,
-                    query: {finder: text}
-                }).then(() => {
-                    closeFinder()
-                    setText("")
-                })
-            } else {
-                setFinderText(text)
+            routerPushCatalogQueryParams(router, 1, "", "", JSON.stringify([]), text).then(() =>{
                 closeFinder()
                 setText("")
-            }
-            setCurrentPage(1)
+            })
         }
     }
 

@@ -1,8 +1,12 @@
 import styles from "@/styles/components/Pagination.module.css"
 import Page from "@/components/Page";
 import {motion} from "framer-motion";
+import {CATALOG} from "@/utils/routes";
+import {useRouter} from "next/router";
 
 const Pagination = ({ pageState, setPage }) => {
+
+    const router = useRouter()
 
     let pages = []
 
@@ -10,9 +14,19 @@ const Pagination = ({ pageState, setPage }) => {
         pages.push(i)
     }
 
+    const setCurrentPage = (page, not) => {
+        if (page !== not) {
+            router.push({
+                pathname: CATALOG,
+                query: {...router.query, page: page}
+            }).then()
+        }
+    }
+
     return (
         <div className={styles.block + ' fd'}>
             <svg
+                onClick={() => setCurrentPage(pageState.page - 1, 0)}
                 className={styles.arrow_svg + ' ' + (pageState.page === 1 && styles.arrow_svg_no_click)}
                 viewBox="0 -960 960 960"
                 xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +35,7 @@ const Pagination = ({ pageState, setPage }) => {
             </svg>
             <PagesList currentPage={pageState.page} pages={pages} setPage={setPage} />
             <svg
+                onClick={() => setCurrentPage(pageState.page + 1, pageState.count + 1)}
                 className={styles.arrow_svg + ' ' + (pageState.page === pageState.count && styles.arrow_svg_no_click)}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 -960 960 960"
