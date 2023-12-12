@@ -11,9 +11,9 @@ import {createPayment} from "@/api/orderApi";
 import {useSelector} from "react-redux";
 import {useActions} from "@/hooks/useActions";
 import Link from "next/link";
-import {BASKET, CATALOG, OFFER} from "@/utils/routes";
+import {BASKET, OFFER} from "@/utils/routes";
 import Head from "next/head";
-import React from "@types/react";
+import React from "react";
 
 function MakeOrder( {price} ) {
 
