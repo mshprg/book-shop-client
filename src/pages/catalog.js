@@ -217,7 +217,7 @@ function Catalog({ maxQ, minQ, max, min, genreIds, queryPage, pageCount, books, 
                             onClick={() => setFiltersVisible(true)}
                             className={styles.filter_button}
                         >
-                            Настроки
+                            Настройки
                             {filters.max !== maxQ || filters.min !== minQ || filters.genreIds.length !== 0 ?
                                 <svg
                                     className={styles.filter_svg}
