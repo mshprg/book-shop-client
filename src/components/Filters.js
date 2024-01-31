@@ -73,7 +73,7 @@ const Filters = ({visible, setVisible, save, setSaveFilters, genres, maxDt, minD
                         <div className={styles.price_line}>
                             <p className={styles.head_text}>Цена</p>
                             <div className={styles.range_slider_block}>
-                                <p className={styles.price}>{minPrice.toFixed(0)} ₽</p>
+                                <p className={styles.price}>{minPrice} ₽</p>
                                 <Slider
                                     min={minDt}
                                     max={maxDt}
@@ -83,7 +83,7 @@ const Filters = ({visible, setVisible, save, setSaveFilters, genres, maxDt, minD
                                     setMaxPrice={(value) => updateMaxPrice(value)}
                                     setMinPrice={(value) => updateMinPrice(value)}
                                 />
-                                <p className={styles.price}>{maxPrice.toFixed(0)} ₽</p>
+                                <p className={styles.price}>{maxPrice} ₽</p>
                             </div>
                         </div>
                         <div className={styles.genres_filter}>
