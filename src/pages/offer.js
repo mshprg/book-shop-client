@@ -8,7 +8,7 @@ import Head from "next/head";
 
 function Offer() {
 
-    const href = 'https://example-digital-book-store.vercel.app'
+    const site = 'https://example-digital-book-store.vercel.app'
 
     return (
         <>
@@ -28,7 +28,7 @@ function Offer() {
                         <p className={styles.description} style={{marginTop: 0}}>
                             Иванов И. И. (ИНН 000000000000), именуемый в дальнейшем «Продавец», настоящим в порядке публичной оферты предлагает
                             заключить на приведенных ниже условиях договор в отношении приобретения электронной книги (далее — «Книга») с любым
-                            лицом (далее — «Приобретатель») — пользователем сети Интернет и посетителем сайта <Link href={href} className={styles.href}>{href}</Link> выразившим
+                            лицом (далее — «Приобретатель») — пользователем сети Интернет и посетителем сайта <Link href={site} className={styles.href}>{site}</Link> выразившим
                             намерение принять условия настоящего Договора. Продавец и Приобретатель совместно именуются «Стороны».
                         </p>
                         <p className={styles.description}>
@@ -124,7 +124,7 @@ function Offer() {
                         <p className={styles.description}>
                             Приобретатель обязан оплатить Продавцу стоимость всех Книг в заказе, цена каждой книги указанна в описании на странице
                             доступной для заказа Книги. Общая сумма, которую обязан заплатить Приобретатель за заказ указана в форме заказа на
-                            странице оплаты заказа <Link href=`${href}/make-order` className={styles.href}>{href}/make-order</Link>.
+                            странице оплаты заказа <Link href=`${site}/make-order` className={styles.href}>{site}/make-order</Link>.
                         </p>
                         <p className={styles.description}>
                             После получения оплаты от Приобретателя Продавец отправляет номер заказа на почту, указанную Приобретателем в форме
