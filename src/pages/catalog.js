@@ -22,6 +22,8 @@ function Catalog({ maxQ, minQ, max, min, genreIds, queryPage, pageCount, books, 
 
     const router = useRouter()
 
+    console.log(maxQ, minQ, max, min, genreIds, queryPage, pageCount, books, genres, last_book, findText)
+
     const [filtersVisible, setFiltersVisible] = useState(false)
 
     const [findHeight, setFindHeight] = useState("0")
