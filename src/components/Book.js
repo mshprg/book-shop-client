@@ -16,6 +16,7 @@ const Book = ({ book }) => {
     const {_basketItems} = useSelector(state => state.basketItems)
 
     const src = process.env.NEXT_PUBLIC_HOST + 'image/' + book.image
+    console.log(book)
 
     const clickOnBook = () => {
         router.push(BOOK + book.token).then(() => {
