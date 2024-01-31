@@ -4,18 +4,9 @@ import Grid from "@/components/Grid";
 import HeightWrapper from "@/components/HeightWrapper";
 import Link from "next/link";
 import {OFFER} from "@/utils/routes";
-import {useEffect, useState} from "react";
 import Head from "next/head";
 
 function ContactUs() {
-
-    const [mail, setMail] = useState('')
-
-    useEffect(() => {
-        setTimeout(() => {
-            setMail('bookbytes@yandex.ru')
-        }, 100)
-    }, [])
 
     return (
         <>
@@ -38,7 +29,7 @@ function ContactUs() {
                         <div className={styles.wrap}>
                             <div className={styles.det_wrap}>
                                 <div className={styles.email_wrapper}>
-                                    <a href="mailto:bookbytes@yandex.ru?subject=Support" className={styles.email}>{mail}</a>
+                                    <a href="" className={styles.email}>example@yandex.ru</a>
                                 </div>
                                 <p className={styles.det_text}>Подробно опишите проблему</p>
                             </div>
