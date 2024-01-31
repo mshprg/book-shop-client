@@ -16,7 +16,6 @@ const Book = ({ book }) => {
     const {_basketItems} = useSelector(state => state.basketItems)
 
     const src = process.env.NEXT_PUBLIC_HOST + 'image/' + book.image
-    console.log(book)
 
     const clickOnBook = () => {
         router.push(BOOK + book.token).then(() => {
@@ -53,7 +52,7 @@ const Book = ({ book }) => {
                     alt="book preview"
                 />
                 <h1 key={book.id + '4'} className={styles.name}>{book.name}</h1>
-                <p key={book.id + '5'} className={styles.price}>{book.price.toFixed(2)} ₽</p>
+                <p key={book.id + '5'} className={styles.price}>{book.price} ₽</p>
                 <button
                     key={book.id + '6'}
                     onClick={addToCart}
