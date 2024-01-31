@@ -280,7 +280,6 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
     let findText = query.finder ? query.finder : ""
 
     const {max, min} = await getPrices()
-    console.log(max, min)
 
     if (!maxQ)
         maxQ = max
