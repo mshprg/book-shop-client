@@ -49,7 +49,7 @@ function Home({ last_book }) {
                             <img
                                 className={styles.image}
                                 src={src}
-                                alt="book image"
+                                alt="../img/alt_preview.jpg"
                             />
                         </Col>
                         <div className={styles.description_block}>

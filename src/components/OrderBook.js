@@ -36,7 +36,7 @@ const OrderBook = ({ itemRef, book }) => {
                     key={book.id + '2'}
                     className={styles.image}
                     src={src}
-                    alt={require("../img/alt_preview.jpg")}
+                    alt="../img/alt_preview.jpg"
                 />
                 <div key={book.id + '3'} className={styles.description_block}>
                     <p key={book.id + '4'} className={styles.name}>{book.name}</p>

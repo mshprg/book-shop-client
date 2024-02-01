@@ -53,7 +53,7 @@ function Book({ book, genres }) {
                         <img
                             src={src}
                             className={styles.book_image}
-                            alt={require("../../img/alt_preview.jpg")}
+                            alt="../../img/alt_preview.jpg"
                         />
                     </Col>
                     <Col xxl={7} xl={7} lg={7} md={7} sm={7} xs={12}>

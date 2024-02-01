@@ -57,7 +57,7 @@ const BasketBook = ({ itemRef, item, items, router, setArrayItems }) => {
                 key={item.basketItemId + '2'}
                 onClick={clickOnItem}
                 style={{display: display ? "block" : "none"}}
-                alt={require("../img/alt_preview.jpg")}
+                alt="../img/alt_preview.jpg"
                 src={src}
                 className={styles.book_image + ' ' + styles.padding_item}
             />
