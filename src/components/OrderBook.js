@@ -1,5 +1,6 @@
 import styles from "@/styles/components/OrderBook.module.css"
 import {downloadBook} from "@/api/bookApi";
+import LoadImage from "@/components/LoadImage";
 
 const OrderBook = ({ itemRef, book }) => {
 
@@ -32,11 +33,11 @@ const OrderBook = ({ itemRef, book }) => {
     return (
         <div key={book.id + '1'} ref={itemRef}>
             <div className={styles.block}>
-                <img
+                <LoadImage
                     key={book.id + '2'}
                     className={styles.image}
                     src={src}
-                    alt="../img/alt_preview.jpg"
+                    alt="image"
                 />
                 <div key={book.id + '3'} className={styles.description_block}>
                     <p key={book.id + '4'} className={styles.name}>{book.name}</p>

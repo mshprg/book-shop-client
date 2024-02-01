@@ -5,6 +5,7 @@ import {BOOK} from "@/utils/routes";
 import {removeBasketItem} from "@/api/basketApi";
 import {useActions} from "@/hooks/useActions";
 import {useSelector} from "react-redux";
+import LoadImage from "@/components/LoadImage";
 
 const BasketBook = ({ itemRef, item, items, router, setArrayItems }) => {
 
@@ -53,11 +54,11 @@ const BasketBook = ({ itemRef, item, items, router, setArrayItems }) => {
             ref={itemRef}
             className={styles.basket_item}
         >
-            <img
+            <LoadImage
                 key={item.basketItemId + '2'}
                 onClick={clickOnItem}
                 style={{display: display ? "block" : "none"}}
-                alt="../img/alt_preview.jpg"
+                alt="image"
                 src={src}
                 className={styles.book_image + ' ' + styles.padding_item}
             />

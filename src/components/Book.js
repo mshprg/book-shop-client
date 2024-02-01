@@ -7,6 +7,7 @@ import {createBasketItem} from "@/api/basketApi";
 import {useActions} from "@/hooks/useActions";
 import {add_notification} from "@/functions/functions";
 import {useSelector} from "react-redux";
+import LoadImage from "@/components/LoadImage";
 
 const Book = ({ book }) => {
 
@@ -44,12 +45,12 @@ const Book = ({ book }) => {
             className={styles.block}
         >
             <div key={book.id + '2'} className="fd">
-                <img
+                <LoadImage
                     key={book.id + '3'}
                     onClick={clickOnBook}
                     src={src}
                     className={styles.image}
-                    alt="../img/alt_preview.jpg"
+                    alt="image"
                 />
                 <h1 key={book.id + '4'} className={styles.name}>{book.name}</h1>
                 <p key={book.id + '5'} className={styles.price}>{book.price} ₽</p>

@@ -12,6 +12,7 @@ import {useSelector} from "react-redux";
 import {getAllGenreByBookId} from "@/api/genreApi";
 import {wrapper} from "@/store";
 import Head from "next/head";
+import LoadImage from "@/components/LoadImage";
 
 function Book({ book, genres }) {
 
@@ -50,10 +51,10 @@ function Book({ book, genres }) {
                         className={styles.book_image_block}
                         xxl={5} xl={5} lg={5} md={5} sm={5} xs={12}
                     >
-                        <img
+                        <LoadImage
                             src={src}
                             className={styles.book_image}
-                            alt="../../img/alt_preview.jpg"
+                            alt="image"
                         />
                     </Col>
                     <Col xxl={7} xl={7} lg={7} md={7} sm={7} xs={12}>

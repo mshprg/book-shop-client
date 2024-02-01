@@ -146,10 +146,10 @@ function Catalog({ maxQ, minQ, max, min, genreIds, queryPage, pageCount, books, 
                     <div className={styles.large_blocks}>
                         <div className={styles.large_block}>
                             <div className={styles.large_book_img_block}>
-                                <img
+                                <LoadImage
                                     className={styles.large_book_img}
                                     src={src_last_book}
-                                    alt={require("../img/alt_preview.jpg")}
+                                    alt="image"
                                 />
                             </div>
                             <div className={styles.description_block}>
