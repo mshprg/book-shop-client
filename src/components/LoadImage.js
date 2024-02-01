@@ -32,7 +32,7 @@ const LoadImage = ({className = null, style = null, onClick = null, src = '', al
             <img
                 className={className}
                 style={style}
-                src="../img/alt_preview.jpg"
+                src="../../public/alt_preview.jpg"
                 onClick={onClick}
                 alt={alt}
             />
