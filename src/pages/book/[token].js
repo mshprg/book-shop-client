@@ -3,9 +3,7 @@ import global from "@/styles/global.module.css"
 import HeightWrapper from "@/components/HeightWrapper";
 import Grid from "@/components/Grid";
 import {Col} from "react-bootstrap";
-import Image from "next/image";
 import {getBookByToken} from "@/api/bookApi";
-import {HOST} from "@/utils/routes";
 import {getCookie} from "cookies-next";
 import {createBasketItem} from "@/api/basketApi";
 import {add_notification, checkBasketToken} from "@/functions/functions";
@@ -55,7 +53,7 @@ function Book({ book, genres }) {
                         <img
                             src={src}
                             className={styles.book_image}
-                            alt="Book image"
+                            alt={require("../../img/alt_preview.jpg")}
                         />
                     </Col>
                     <Col xxl={7} xl={7} lg={7} md={7} sm={7} xs={12}>

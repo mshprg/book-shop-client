@@ -14,7 +14,6 @@ import {useActions} from "@/hooks/useActions";
 import {useSelector} from "react-redux";
 import {getCookie} from "cookies-next";
 import {createBasketItem} from "@/api/basketApi";
-import {SET_FIND_BOOK} from "@/store/reducers/finderReducer/finderReducerActions";
 import {useRouter} from "next/router";
 import Head from "next/head";
 
@@ -150,7 +149,7 @@ function Catalog({ maxQ, minQ, max, min, genreIds, queryPage, pageCount, books, 
                                 <img
                                     className={styles.large_book_img}
                                     src={src_last_book}
-                                    alt="book"
+                                    alt={require("../img/alt_preview.jpg")}
                                 />
                             </div>
                             <div className={styles.description_block}>

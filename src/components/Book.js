@@ -19,7 +19,7 @@ const Book = ({ book }) => {
 
     const clickOnBook = () => {
         router.push(BOOK + book.token).then(() => {
-            console.log('push')
+
         })
     }
 
@@ -49,7 +49,7 @@ const Book = ({ book }) => {
                     onClick={clickOnBook}
                     src={src}
                     className={styles.image}
-                    alt="book preview"
+                    alt={require("../img/alt_preview.jpg")}
                 />
                 <h1 key={book.id + '4'} className={styles.name}>{book.name}</h1>
                 <p key={book.id + '5'} className={styles.price}>{book.price} ₽</p>

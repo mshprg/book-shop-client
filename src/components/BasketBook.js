@@ -1,7 +1,7 @@
 import styles from "@/styles/components/BasketBook.module.css";
 import {motion, useMotionValue} from "framer-motion";
 import {useEffect, useState} from "react";
-import {BOOK, HOST} from "@/utils/routes";
+import {BOOK} from "@/utils/routes";
 import {removeBasketItem} from "@/api/basketApi";
 import {useActions} from "@/hooks/useActions";
 import {useSelector} from "react-redux";
@@ -57,7 +57,7 @@ const BasketBook = ({ itemRef, item, items, router, setArrayItems }) => {
                 key={item.basketItemId + '2'}
                 onClick={clickOnItem}
                 style={{display: display ? "block" : "none"}}
-                alt="book image"
+                alt={require("../img/alt_preview.jpg")}
                 src={src}
                 className={styles.book_image + ' ' + styles.padding_item}
             />
