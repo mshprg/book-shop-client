@@ -8,6 +8,7 @@ import {BOOK, CATALOG} from "@/utils/routes";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import Head from 'next/head'
+import LoadImage from "@/components/LoadImage";
 
 function Home({ last_book }) {
 
@@ -46,10 +47,10 @@ function Home({ last_book }) {
                     </div>
                     <div className={styles.book}>
                         <Col className={styles.image_wrapper} xxl={3} xl={3} lg={3} md={3} sm={4} xs={4}>
-                            <img
+                            <LoadImage
                                 className={styles.image}
                                 src={src}
-                                alt="../img/alt_preview.jpg"
+                                alt="image"
                             />
                         </Col>
                         <div className={styles.description_block}>

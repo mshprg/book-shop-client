@@ -16,6 +16,7 @@ import {getCookie} from "cookies-next";
 import {createBasketItem} from "@/api/basketApi";
 import {useRouter} from "next/router";
 import Head from "next/head";
+import LoadImage from "@/components/LoadImage";
 
 function Catalog({ maxQ, minQ, max, min, genreIds, queryPage, pageCount, books, genres, last_book, findText }) {
 
